@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/allproject.dir/main.cpp.o  -o allproject  RTree/libRTree.a 

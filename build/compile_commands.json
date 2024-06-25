@@ -1,0 +1,19 @@
+[
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/c++   -I../RTree -I../hom_matVecMul  -O3 -DNDEBUG   -std=gnu++17 -o CMakeFiles/allproject.dir/main.cpp.o -c /home/zhang/sllll/my/RTree-main/main.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/main.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/c++   -I../RTree -I../hom_matVecMul  -O3 -DNDEBUG   -std=gnu++17 -o RTree/CMakeFiles/RTree.dir/RTree.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/RTree.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/RTree.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/c++   -I../RTree -I../hom_matVecMul  -O3 -DNDEBUG   -std=gnu++17 -o RTree/CMakeFiles/RTree.dir/Node.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/Node.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/Node.cpp"
+}
+]

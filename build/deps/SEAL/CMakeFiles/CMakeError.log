@@ -1,0 +1,101 @@
+Performing C++ SOURCE FILE Test SEAL_MEMSET_S_FOUND failed with the following output:
+Change Dir: /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_04ee3/fast && /usr/bin/make -f CMakeFiles/cmTC_04ee3.dir/build.make CMakeFiles/cmTC_04ee3.dir/build
+make[1]: 进入目录“/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_04ee3.dir/src.cxx.o
+/usr/bin/c++    -DSEAL_MEMSET_S_FOUND -fPIE   -o CMakeFiles/cmTC_04ee3.dir/src.cxx.o -c /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp/src.cxx
+/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp/src.cxx: In function ‘int main()’:
+/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp/src.cxx:7:17: error: ‘memset_s’ was not declared in this scope; did you mean ‘memset’?
+    7 |         int r = memset_s(str, sizeof(str), 'a', 5);
+      |                 ^~~~~~~~
+      |                 memset
+make[1]: *** [CMakeFiles/cmTC_04ee3.dir/build.make:66：CMakeFiles/cmTC_04ee3.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_04ee3/fast] 错误 2
+
+
+...and run output:
+
+Return value: 1
+Source file was:
+
+    #define __STDC_WANT_LIB_EXT1__ 1
+    #include <string.h>
+    int main(void)
+    {
+        char str[] = "ghghghghghghghghghghgh";
+        int r = memset_s(str, sizeof(str), 'a', 5);
+        return r;
+    }
+Determining if the explicit_memset exist failed with the following output:
+Change Dir: /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7803f/fast && /usr/bin/make -f CMakeFiles/cmTC_7803f.dir/build.make CMakeFiles/cmTC_7803f.dir/build
+make[1]: 进入目录“/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_7803f.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fPIE   -o CMakeFiles/cmTC_7803f.dir/CheckSymbolExists.c.o   -c /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: ‘explicit_memset’ undeclared (first use in this function)
+    8 |   return ((int*)(&explicit_memset))[argc];
+      |                   ^~~~~~~~~~~~~~~
+/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+make[1]: *** [CMakeFiles/cmTC_7803f.dir/build.make:66：CMakeFiles/cmTC_7803f.dir/CheckSymbolExists.c.o] 错误 1
+make[1]: 离开目录“/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_7803f/fast] 错误 2
+
+
+File /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef explicit_memset
+  return ((int*)(&explicit_memset))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4812e/fast && /usr/bin/make -f CMakeFiles/cmTC_4812e.dir/build.make CMakeFiles/cmTC_4812e.dir/build
+make[1]: 进入目录“/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_4812e.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD -fPIE   -o CMakeFiles/cmTC_4812e.dir/src.c.o   -c /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_4812e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4812e.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_4812e.dir/src.c.o  -o cmTC_4812e 
+/usr/bin/ld: CMakeFiles/cmTC_4812e.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_4812e.dir/build.make:87：cmTC_4812e] 错误 1
+make[1]: 离开目录“/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_4812e/fast] 错误 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
