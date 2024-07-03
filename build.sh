@@ -1,4 +1,7 @@
-. common.sh
+. ./common.sh
+
+# 设置构建目录
+BUILD_DIR=./build
 
 for deps in eigen3 emp-ot emp-tool hexl SEAL-3.7
 do
@@ -23,6 +26,8 @@ cmake .. -DCMAKE_BUILD_TYPE=Release -DSCI_BUILD_NETWORKS=ON -DOPENSSL_ROOT_DIR=/
 
 
 
+#make allproject
 
-make allproject
+#make hom_matVec
+make
 

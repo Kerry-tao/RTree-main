@@ -1,5 +1,5 @@
 // Authors: Wen-jie Lu.
-#include "gemini/core/util/math.h"
+#include "math.h"
 namespace gemini {
 bool RU128(F64 f, U64 u128[2]) {
   constexpr F64 two_pow_64 = 4. * static_cast<F64>(1L << 62);

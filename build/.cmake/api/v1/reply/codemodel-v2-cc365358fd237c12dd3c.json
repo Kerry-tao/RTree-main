@@ -8,7 +8,8 @@
 					"build" : ".",
 					"childIndexes" : 
 					[
-						1
+						1,
+						2
 					],
 					"minimumCMakeVersion" : 
 					{
@@ -34,15 +35,31 @@
 					[
 						0
 					]
+				},
+				{
+					"build" : "hom_matVecMul",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "hom_matVecMul",
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
 				}
 			],
-			"name" : "Release",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
 					"childIndexes" : 
 					[
-						1
+						1,
+						2
 					],
 					"directoryIndexes" : 
 					[
@@ -65,6 +82,19 @@
 					[
 						0
 					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "hom_matVec",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3
+					]
 				}
 			],
 			"targets" : 
@@ -72,16 +102,30 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "RTree::@b16348df2d0231d04ce5",
-					"jsonFile" : "target-RTree-Release-9bc9137a095171cfb373.json",
+					"jsonFile" : "target-RTree-Debug-82c12a4233bd6446c2fd.json",
 					"name" : "RTree",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "allproject::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-allproject-Release-d2f99ca504aa3cd23909.json",
+					"jsonFile" : "target-allproject-Debug-2583e555c5e804930d2e.json",
 					"name" : "allproject",
 					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gemini::@4a102eb4070bd6d679ef",
+					"jsonFile" : "target-gemini-Debug-507199f340862807cf42.json",
+					"name" : "gemini",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "test_hom_matVec::@4a102eb4070bd6d679ef",
+					"jsonFile" : "target-test_hom_matVec-Debug-360b8b0278dfa72b77a6.json",
+					"name" : "test_hom_matVec",
+					"projectIndex" : 2
 				}
 			]
 		}

@@ -10,6 +10,7 @@
 #include <functional>
 #include "logging.h"
 #include "ThreadPool.h"  // 调整路径以匹配项目结构
+#include <iostream>
 
 using namespace seal;
 
@@ -91,7 +92,7 @@ static TensorShape getSplit(const HomFCSS::Meta &meta, size_t N) {
 
 // defined in hom_conv2d_ss.cc
 //&ct表示对 seal::Ciphertext 类型对象的一个引用。允许函数直接操作调用者提供的对象，而不是操作其副本。
-void flood_ciphertext(seal::Ciphertext &ct,
+/**void flood_ciphertext(seal::Ciphertext &ct,
                       std::shared_ptr<seal::UniformRandomGenerator> prng,
                       const seal::SEALContext &context,
                       const seal::PublicKey &pk,
@@ -114,6 +115,7 @@ void sub_poly_inplace(seal::Ciphertext &ct, const seal::Plaintext &pt,
                       const seal::SEALContext &context,
                       const seal::Evaluator &evaluator);
 }
+*/
 
 //用于获取当前同态加密方案的类型。
 seal::scheme_type HomFCSS::scheme() const {
@@ -358,6 +360,7 @@ Code HomFCSS::encryptInputVector(
   gemini::ThreadPool tpool(nthreads);
   return LaunchWorks(tpool, nout, encode_prg);
 }*/
+//const Meta &meta: 包含权重矩阵形状等元数据的结构。输出是明文（因为<seal::Plaintext>> &encoded_share）
 
 //const Meta &meta: 包含权重矩阵形状等元数据的结构。输出是密文（因为seal::Serializable<seal::Ciphertext> &encrypted_share)
 Code HomFCSS::encryptWeightMatrix(
@@ -391,6 +394,10 @@ Code HomFCSS::encryptWeightMatrix(
     //双层循环把大矩阵分成多个小矩阵
     //例如大矩阵是[[123456][789 10 11 12][13 14 15 16 17 18][19 20 21 22 23 24]]
     //小矩阵分别是[[123][789]]、[[456][10 11 12]]、[[13 14 15][19 20 21]]、[[16 17 18][22 23 24]]
+
+  // 确保 encrypted_share 的向量长度跟分块以后的行数一致
+  encrypted_share.resize(n_row_blks);
+
   for (size_t r_blk = 0; r_blk < n_row_blks && !is_failed; ++r_blk) {
     //初始化密文向量，预填充使用加密器生成的零值密文
     encrypted_share[r_blk].resize(n_col_blks, encryptor_->encrypt_zero());
@@ -443,6 +450,23 @@ Code HomFCSS::encryptWeightMatrix(
       } else {
         try{
           //使用 encryptor_ 对象对明文 pt 进行对称加密，并将结果存储在 encrypted_share 的相应位置。
+          // 在密文生成之前输出明文多项式
+          // 使用 SEAL 的 to_string 方法来获取明文多项式的字符串表示
+          /**std::string poly_str = pt.to_string();
+          std::cout << "Plaintext polynomial: " << poly_str << std::endl;
+
+          // 如果你想查看多项式的具体系数
+          std::cout << "Coefficients: ";
+          for (size_t i = 0; i < pt.coeff_count(); ++i) {
+              std::cout << pt[i] << " ";
+          }
+          std::cout << std::endl;
+          */
+
+          //printPlaintext(pt);
+          //测试了pt没有问题，Plaintext polynomial: 18x^23 + 17x^22 + 16x^21 + 15x^20 + 14x^19 + 13x^18 + 12x^17 + 11x^16 + 10x^15 + Fx^14 + Ex^13 + Dx^12 + Cx^11 + Bx^10 + Ax^9 + 9x^8 + 8x^7 + 7x^6 + 6x^5 + 5x^4 + 4x^3 + 3x^2 + 2x^1 + 1
+          //Coefficients: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+
           encrypted_share.at(r_blk).at(c_blk) = encryptor_->encrypt_symmetric(pt);
         } catch (const std::logic_error &e) {
         is_failed = true;
@@ -471,7 +495,8 @@ Code HomFCSS::matVecMul(const std::vector<std::vector<seal::Ciphertext>> &matrix
                         const std::vector<seal::Ciphertext> &input_vec,
                         const Meta &meta,
                         std::vector<seal::Ciphertext> &out_share0,
-                        Tensor<uint64_t> &out_share1) const {
+                        Tensor<uint64_t> &out_share1,
+                        const seal::RelinKeys &relin_keys) const {
   ENSURE_OR_RETURN(context_ && evaluator_, Code::ERR_CONFIG);
 
   auto split_shape = getSplit(meta, poly_degree());
@@ -519,6 +544,10 @@ Code HomFCSS::matVecMul(const std::vector<std::vector<seal::Ciphertext>> &matrix
   }*/
 
   out_share0.resize(n_ct_out);
+
+  //用于测试解密
+  seal::Decryptor decryptor(*context_, *sk_);
+
   //auto fma_prg = [&](long wid, size_t start, size_t end) {
     //end=2
   //for (size_t j = start; j < end; ++j) {
@@ -527,22 +556,39 @@ Code HomFCSS::matVecMul(const std::vector<std::vector<seal::Ciphertext>> &matrix
       //j=0时，matrix[j][0]=[1 2 3 7 8 9 0 0]对应的多项式，input_vec[0]为[3 0 0 0 0 0 3 5]对应的多项式(编码前的向量为[3, 5, 7]）
     evaluator_->multiply(input_vec[0], matrix[j][0], out_share0[j]);
 
+    //现在out_share0[j]的size是3，需要进行重线性化
+    evaluator_->relinearize_inplace(out_share0[j], relin_keys); // relin_keys should be defined and initialized elsewhere
+
+    // 临时解密并输出结果,用于测试时查看输出结果是否正确
+    /**Plaintext plain_result;
+    decryptor.decrypt(out_share0[j], plain_result);
+    // 输出解密结果的十进制系数
+    std::cout << "New parms-Decimal coefficients: ";
+    for (size_t i = 0; i < plain_result.coeff_count(); ++i) {
+        // 转换十六进制到十进制
+        std::cout << plain_result[i] << " ";
+    }
+    std::cout << std::endl;*/
+
       //vec_share0[0], matrix[j][0],out_share0[j]);
       // TODO(wen-jie): to implement FMA
     for (size_t i = 1; i < n_ct_in; ++i) {
       seal::Ciphertext tmp;
         //i=1时，matrix[j][1]=[4 5 6 10 11 12 0 0]对应的多项式，input_vec[1]=[2 0 0 0 0 0 5 1]对应的多项式(编码前的向量为[2, 9, 5]）
       evaluator_->multiply(input_vec[i], matrix[j][i], tmp);
+
+      evaluator_->relinearize_inplace(tmp, relin_keys); // Relinearize tmp before adding it
       evaluator_->add_inplace(out_share0[j], tmp);
     }
   }
-  return Code::OK;
+  //return Code::OK;
   //};
   //(void)LaunchWorks(tpool, n_ct_out, fma_prg);
   
   //out_share0是(□+X+X^2+□X^3+...，△+X+X^2+△X^3+...)，其中第一个□是[1 2 3 4 5 6]和向量乘之后的内积，第二个□是[7 8 9 10 11 12]和向量的内积。△是类似的
-  //out_share1用来存储随机掩码向量
-  addRandomMask(out_share0, out_share1, meta);
+  //out_share1用来存储随机掩码向量，
+  //加了掩码之后，计算的结果是[90, 217, 344,471]，不知道为什么不是那么对，正确结果应为[91,217,343,469]
+  //addRandomMask(out_share0, out_share1, meta);
 
   if (scheme() == seal::scheme_type::bfv) {
     for (auto &c : out_share0) {
@@ -554,6 +600,7 @@ Code HomFCSS::matVecMul(const std::vector<std::vector<seal::Ciphertext>> &matrix
   removeUnusedCoeffs(out_share0, meta);
   return Code::OK;
 }
+
 
 
 Code HomFCSS::addRandomMask(std::vector<seal::Ciphertext> &cts,
@@ -582,7 +629,7 @@ Code HomFCSS::addRandomMask(std::vector<seal::Ciphertext> &cts,
     auto &this_ct = cts.at(r_blk);
 
       //flood_ciphertext 函数的作用是对密文进行"淹没"处理，通过添加随机噪声和加密的零值来增加密文的安全性。
-    flood_ciphertext(this_ct, prng, *context_, *pk_, *evaluator_);
+    HomFCSS::flood_ciphertext(this_ct, prng, *context_, *pk_, *evaluator_);
       //sampleRandomMask生成随机掩码 mask，并将目标位置的系数存储在 coeffs 中。也就是原论文图2中的随机数r
     CHECK_ERR(
           sampleRandomMask(targets, coeffs.data(), coeffs.size(), mask,
@@ -731,4 +778,313 @@ Code HomFCSS::idealFunctionality(const Tensor<uint64_t> &input_matrix,
                                  Tensor<uint64_t> &out) const {
   return Code::OK;
 }
+
+
+
+
+
+void HomFCSS::flood_ciphertext(seal::Ciphertext &ct,
+                      std::shared_ptr<seal::UniformRandomGenerator> prng,
+                      const seal::SEALContext &context,
+                      const seal::PublicKey &pk,
+                      const seal::Evaluator &evaluator) const {
+  if (ct.size() != 2) {
+    LOG(WARNING) << "flood_ciphertext: demands more coeff_modulus";
+    return;
+  }
+
+  auto cntxt_data = context.get_context_data(ct.parms_id());
+  if (!cntxt_data) {
+    LOG(WARNING) << "flood_ciphertext: invalid ct.parms_id()";
+    return;
+  }
+
+
+  // NOTE(wen-jie) adding encryption-zero with larger noise
+  auto &parms = cntxt_data->parms();
+  const int noise_len = cntxt_data->total_coeff_modulus_bit_count() -
+                        parms.plain_modulus().bit_count() - 1;
+
+  auto mempool = seal::MemoryManager::GetPool();
+  auto random = seal::util::allocate_uint(
+      ct.coeff_modulus_size() * ct.poly_modulus_degree(), mempool);
+
+  HomFCSS::set_poly_coeffs_uniform(random.get(), std::min(64, noise_len), prng, parms);
+
+  size_t n = ct.poly_modulus_degree();
+  auto dst_ptr = ct.data();
+  auto rns_ptr = random.get();
+  auto &coeff_modulus = parms.coeff_modulus();
+  for (size_t i = 0; i < ct.coeff_modulus_size(); i++) {
+    seal::util::add_poly_coeffmod(rns_ptr, dst_ptr, n, coeff_modulus[i],
+                                  dst_ptr);
+    rns_ptr += n;
+    dst_ptr += n;
+  }
+
+  evaluator.mod_switch_to_inplace(ct, context.last_parms_id());
+
+  seal::Ciphertext zero;
+  asymmetric_encrypt_zero(context, pk, ct.parms_id(), ct.is_ntt_form(), prng, zero);
+  evaluator.add_inplace(ct, zero);
+  if (ct.is_ntt_form()) {
+    evaluator.transform_from_ntt_inplace(ct);
+  }
+}
+
+void HomFCSS::truncate_for_decryption(seal::Ciphertext &ct,
+                             const seal::Evaluator &evaluator,
+                             const seal::SEALContext &context) const {
+  auto context_data = context.last_context_data();
+  const auto &parms = context_data->parms();
+  if (parms.scheme() != seal::scheme_type::bfv) {
+    LOG(WARNING) << "truncate_for_decryption: shceme not supported";
+    return;
+  }
+
+  if (ct.size() != 2) {
+    LOG(WARNING) << "truncate_for_decryption: ct.size() should be 2";
+    return;
+  }
+
+  // only keep the first modulus
+  evaluator.mod_switch_to_inplace(ct, context_data->parms_id());
+  if (ct.is_ntt_form()) {
+    evaluator.transform_from_ntt_inplace(ct);
+  }
+
+  // Hack on BFV decryption formula: c0 + c1*s mod p0 = m' = Delta*m + e ->
+  // round(m'/Delta) = m The low-end bits of c0, c1 are useless for decryption,
+  // and thus we can truncate those bits
+  const size_t poly_n = ct.poly_modulus_degree();
+  // Delta := floor(p0/t)
+  const int n_delta_bits =
+      parms.coeff_modulus()[0].bit_count() - parms.plain_modulus().bit_count();
+  const int one_more_bit = IsTwoPower(parms.plain_modulus().value()) ? 0 : 1;
+  const uint64_t mask0 = make_bits_mask(n_delta_bits - 1 - one_more_bit);
+//#if !USE_APPROX_RESHARE || BFV_TRUNCATE_LARGE
+  std::transform(ct.data(0), ct.data(0) + poly_n, ct.data(0),
+                 [mask0](uint64_t u) { return u & mask0; });
+//#endif
+  // Norm |c1 * s|_infty < |c1|_infty * |s|_infty.
+  // The value of |c1|_infty * |s|_infty is heuristically bounded by 12. *
+  // Std(|c1|_infty) * Std(|s|_infty) Assume |c1| < B is B-bounded uniform. Then
+  // the variance Var(|c1|_infty) = B^2*N/12. We need to make sure the value |c1
+  // * s|_infty is NOT overflow Delta.
+  constexpr double heuristic_bound = 12.;  // P(|x| > Delta) < 2^−{40}
+  int n_var_bits{0};
+  // The variance Var(|s|_infty) = 2/3*N since the secret key s is uniform from
+  // {-1, 0, 1}.
+  n_var_bits = std::log2(heuristic_bound * poly_n * std::sqrt(1 / 18.));
+  const uint64_t mask1 = make_bits_mask(n_delta_bits - n_var_bits);
+//#if !USE_APPROX_RESHARE || BFV_TRUNCATE_SMALL
+  std::transform(ct.data(1), ct.data(1) + poly_n, ct.data(1),
+                 [mask1](uint64_t u) { return u & mask1; });
+//#endif
+}
+
+Code HomFCSS::sample_random_mask(const std::vector<size_t> &targets,
+                        uint64_t *coeffs_buff, size_t buff_size,
+                        seal::Plaintext &mask, seal::parms_id_type pid,
+                        std::shared_ptr<seal::UniformRandomGenerator> prng,
+                        const seal::SEALContext &context) const {
+  using namespace seal::util;
+
+  auto cntxt_data = context.get_context_data(pid);
+  ENSURE_OR_RETURN(cntxt_data != nullptr, Code::ERR_INVALID_ARG);
+  ENSURE_OR_RETURN(!targets.empty(), Code::ERR_INVALID_ARG);
+  ENSURE_OR_RETURN(buff_size >= targets.size(), Code::ERR_OUT_BOUND);
+  ENSURE_OR_RETURN(coeffs_buff != nullptr, Code::ERR_NULL_POINTER);
+  ENSURE_OR_RETURN(prng != nullptr, Code::ERR_NULL_POINTER);
+
+  auto parms = cntxt_data->parms();
+  const size_t N = parms.poly_modulus_degree();
+  if (std::any_of(targets.begin(), targets.end(),
+                  [N](size_t c) { return c >= N; })) {
+    return Code::ERR_INVALID_ARG;
+  }
+
+  mask.parms_id() = seal::parms_id_zero;  // foo SEAL when using BFV
+  mask.resize(N);
+
+  const size_t nbytes = mul_safe(mask.coeff_count(), sizeof(uint64_t));
+  if (prng) {
+    prng->generate(nbytes, reinterpret_cast<std::byte *>(mask.data()));
+  } else {
+    auto _prng = parms.random_generator()->create();
+    _prng->generate(nbytes, reinterpret_cast<std::byte *>(mask.data()));
+  }
+
+  const auto &t = parms.plain_modulus();
+  if (IsTwoPower(t.value())) {
+    uint64_t mod_mask = t.value() - 1;
+    std::transform(mask.data(), mask.data() + mask.coeff_count(), mask.data(),
+                   [mod_mask](uint64_t u) { return u & mod_mask; });
+  } else {
+    // TODO(wen-jie): to use reject sampling to obtain uniform in [0, t).
+    modulo_poly_coeffs(mask.data(), mask.coeff_count(), t, mask.data());
+  }
+
+  auto coeff_ptr = coeffs_buff;
+  for (size_t idx : targets) {
+    *coeff_ptr++ = mask[idx];
+  }
+  return Code::OK;
+}
+
+inline uint64_t HomFCSS::make_bits_mask(int n_low_zeros) const{
+  n_low_zeros = std::max(0, n_low_zeros);
+  n_low_zeros = std::min(63, n_low_zeros);
+  return (static_cast<uint64_t>(-1) >> n_low_zeros) << n_low_zeros;
+}
+
+namespace internal {
+void sub_poly_inplace(seal::Ciphertext &ct, const seal::Plaintext &pt,
+                      const seal::SEALContext &context,
+                      const seal::Evaluator &evaluator) {
+  if (ct.size() != 2) {
+    LOG(FATAL) << "sub_poly_inplace: invalid ct.size()";
+    return;
+  }
+
+  if (pt.parms_id() == seal::parms_id_zero) {
+    if (pt.coeff_count() != ct.poly_modulus_degree()) {
+      LOG(FATAL) << "sub_poly_inplace: invalid pt.coeff_count()";
+      return;
+    }
+    evaluator.sub_plain_inplace(ct, pt);
+    return;
+  }
+
+  auto n = ct.poly_modulus_degree();
+  auto L = ct.coeff_modulus_size();
+  if (pt.coeff_count() != n * L) {
+    LOG(FATAL) << "sub_poly_inplace: invalid pt.coeff_count()";
+    return;
+  }
+
+  auto cntxt = context.get_context_data(ct.parms_id());
+  if (!cntxt) {
+    LOG(FATAL) << "sub_poly_inplace: invalid ct.parms_id()";
+  }
+
+  auto &coeff_modulus = cntxt->parms().coeff_modulus();
+  auto src_ptr = pt.data();
+  auto dst_ptr = ct.data(0);
+  for (size_t l = 0; l < L; ++l) {
+    seal::util::sub_poly_coeffmod(dst_ptr, src_ptr, n, coeff_modulus[l],
+                                  dst_ptr);
+    dst_ptr += n;
+    src_ptr += n;
+  }
+}
+
+};  // namespace internal
+
+void HomFCSS::set_poly_coeffs_uniform(
+    uint64_t *poly, int bitlen,
+    std::shared_ptr<seal::UniformRandomGenerator> prng,
+    const seal::EncryptionParameters &parms) const{
+  using namespace seal::util;
+  if (bitlen < 0 || bitlen > 64) {
+    LOG(WARNING) << "set_poly_coeffs_uniform invalid bitlen";
+  }
+
+  auto &coeff_modulus = parms.coeff_modulus();
+  size_t coeff_count = parms.poly_modulus_degree();
+  size_t coeff_mod_count = coeff_modulus.size();
+  uint64_t bitlen_mask = (1ULL << (bitlen % 64)) - 1;
+
+  // sample random in [0, 2^bitlen) then convert it to the RNS form
+  const size_t nbytes = mul_safe(coeff_count, sizeof(uint64_t));
+  if (prng) {
+    prng->generate(nbytes, reinterpret_cast<seal::seal_byte *>(poly));
+  } else {
+    auto _prng = parms.random_generator()->create();
+    _prng->generate(nbytes, reinterpret_cast<seal::seal_byte *>(poly));
+  }
+
+  uint64_t *dst_ptr = poly + coeff_count;
+  for (size_t j = 1; j < coeff_mod_count; ++j) {
+    const uint64_t *src_ptr = poly;
+    for (size_t i = 0; i < coeff_count; ++i, ++src_ptr) {
+      *dst_ptr++ = barrett_reduce_64(*src_ptr & bitlen_mask, coeff_modulus[j]);
+    }
+  }
+
+  dst_ptr = poly;
+  for (size_t i = 0; i < coeff_count; ++i, ++dst_ptr) {
+    *dst_ptr = barrett_reduce_64(*dst_ptr & bitlen_mask, coeff_modulus[0]);
+  }
+}
+
+void HomFCSS::asymmetric_encrypt_zero(
+    const seal::SEALContext &context, const seal::PublicKey &public_key,
+    const seal::parms_id_type parms_id, bool is_ntt_form,
+    std::shared_ptr<seal::UniformRandomGenerator> prng,
+    seal::Ciphertext &destination) const{
+  using namespace seal;
+  using namespace seal::util;
+  // We use a fresh memory pool with `clear_on_destruction' enabled
+  MemoryPoolHandle pool =
+      MemoryManager::GetPool(mm_prof_opt::mm_force_new, true);
+
+  auto &context_data = *context.get_context_data(parms_id);
+  auto &parms = context_data.parms();
+  auto &coeff_modulus = parms.coeff_modulus();
+  size_t coeff_modulus_size = coeff_modulus.size();
+  size_t coeff_count = parms.poly_modulus_degree();
+  auto ntt_tables = context_data.small_ntt_tables();
+  size_t encrypted_size = public_key.data().size();
+
+  // Make destination have right size and parms_id
+  // Ciphertext (c_0,c_1, ...)
+  destination.resize(context, parms_id, encrypted_size);
+  destination.is_ntt_form() = is_ntt_form;
+  destination.scale() = 1.0;
+
+  // Generate u <-- R_3
+  auto u(allocate_poly(coeff_count, coeff_modulus_size, pool));
+  sample_poly_ternary(prng, parms, u.get());
+
+  // c[j] = u * public_key[j]
+  for (size_t i = 0; i < coeff_modulus_size; i++) {
+    ntt_negacyclic_harvey_lazy(u.get() + i * coeff_count, ntt_tables[i]);
+    for (size_t j = 0; j < encrypted_size; j++) {
+      dyadic_product_coeffmod(u.get() + i * coeff_count,
+                              public_key.data().data(j) + i * coeff_count,
+                              coeff_count, coeff_modulus[i],
+                              destination.data(j) + i * coeff_count);
+
+      // Addition with e_0, e_1 is in non-NTT form
+      if (!is_ntt_form) {
+        inverse_ntt_negacyclic_harvey(destination.data(j) + i * coeff_count,
+                                      ntt_tables[i]);
+      }
+    }
+  }
+
+  // Generate e_j <-- chi
+  // c[j] = public_key[j] * u + e[j]
+//#if USE_APPROX_RESHARE
+  // NOTE(wen-jie) we skip e[0] here since e[0] is replaced by the secret sharing random.
+  //for (size_t j = 1; j < encrypted_size; j++) {
+//#else
+  for (size_t j = 0; j < encrypted_size; j++) {
+//#endif
+    SEAL_NOISE_SAMPLER(prng, parms, u.get());
+    for (size_t i = 0; i < coeff_modulus_size; i++) {
+      // Addition with e_0, e_1 is in NTT form
+      if (is_ntt_form) {
+        ntt_negacyclic_harvey(u.get() + i * coeff_count, ntt_tables[i]);
+      }
+      add_poly_coeffmod(
+          u.get() + i * coeff_count, destination.data(j) + i * coeff_count,
+          coeff_count, coeff_modulus[i], destination.data(j) + i * coeff_count);
+    }
+  }
+}
+
+
+
 }  // namespace gemini

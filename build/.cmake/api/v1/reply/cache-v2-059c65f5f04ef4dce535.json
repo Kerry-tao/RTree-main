@@ -39,11 +39,11 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ..."
+					"value" : "No help, variable specified on the command line."
 				}
 			],
 			"type" : "STRING",
-			"value" : "Release"
+			"value" : "Debug"
 		},
 		{
 			"name" : "CMAKE_CACHEFILE_DIR",
@@ -767,7 +767,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "2"
+			"value" : "3"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
@@ -1154,6 +1154,18 @@
 			"value" : "CpuFeatures_DIR-NOTFOUND"
 		},
 		{
+			"name" : "Eigen3_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Eigen3."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/home/zhang/sllll/my/RTree-main/build/share/eigen3/cmake"
+		},
+		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Threads",
 			"properties" : 
 			[
@@ -1260,6 +1272,30 @@
 			],
 			"type" : "UNINITIALIZED",
 			"value" : "ON"
+		},
+		{
+			"name" : "hom_matVec_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/zhang/sllll/my/RTree-main/build/hom_matVecMul"
+		},
+		{
+			"name" : "hom_matVec_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/zhang/sllll/my/RTree-main/hom_matVecMul"
 		},
 		{
 			"name" : "main_BINARY_DIR",

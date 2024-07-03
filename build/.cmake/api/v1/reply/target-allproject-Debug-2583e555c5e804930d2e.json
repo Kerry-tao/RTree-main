@@ -26,13 +26,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 20,
+				"line" : 38,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 23,
+				"line" : 43,
 				"parent" : 0
 			},
 			{
@@ -46,6 +46,12 @@
 				"file" : 0,
 				"line" : 4,
 				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 5,
+				"parent" : 0
 			}
 		]
 	},
@@ -55,7 +61,19 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-O3 -DNDEBUG  "
+					"fragment" : "-g  "
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-pthread"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-Wno-unknown-warning"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-Wno-unknown-warning-option"
 				},
 				{
 					"fragment" : "-std=gnu++17"
@@ -70,6 +88,25 @@
 				{
 					"backtrace" : 4,
 					"path" : "/home/zhang/sllll/my/RTree-main/hom_matVecMul"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/zhang/sllll/my/RTree-main/deps/eigen"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/zhang/sllll/my/RTree-main/build/include"
 				}
 			],
 			"language" : "CXX",
@@ -92,7 +129,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-O3 -DNDEBUG",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
@@ -102,6 +139,27 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "RTree/libRTree.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib/libhexl.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-pthread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib/libzstd.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib/libhexl.a",
 				"role" : "libraries"
 			}
 		],

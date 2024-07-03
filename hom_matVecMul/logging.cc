@@ -1,6 +1,6 @@
 // Authors: Wen-jie Lu.
 // Basically taken from TensorFlow
-#include "gemini/core/logging.h"
+#include "logging.h"
 
 #include <stdlib.h>
 #include <string.h>

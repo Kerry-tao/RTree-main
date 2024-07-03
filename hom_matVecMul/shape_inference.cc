@@ -1,8 +1,8 @@
 //  Authors: Wen-jie Lu on 2021/9/14.
-#include "gemini/cheetah/shape_inference.h"
+#include "shape_inference.h"
 
-#include "gemini/core/logging.h"
-#include "gemini/core/util/math.h"
+#include "logging.h"
+#include "math.h"
 
 namespace gemini {
 namespace shape_inference {

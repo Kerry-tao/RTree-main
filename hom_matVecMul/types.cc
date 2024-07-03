@@ -1,5 +1,5 @@
 // Authors: Wen-jie Lu.
-#include "gemini/core/types.h"
+#include "types.h"
 std::string CodeMessage(Code code) {
   switch (code) {
     case Code::OK:

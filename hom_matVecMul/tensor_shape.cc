@@ -1,5 +1,5 @@
 //  Authors: Wen-jie Lu on 2021/9/15.
-#include "gemini/cheetah/tensor_shape.h"
+#include "tensor_shape.h"
 
 #include <iostream>
 namespace gemini {

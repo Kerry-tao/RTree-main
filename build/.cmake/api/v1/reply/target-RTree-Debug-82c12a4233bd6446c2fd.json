@@ -44,6 +44,12 @@
 				"file" : 1,
 				"line" : 4,
 				"parent" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 5,
+				"parent" : 2
 			}
 		]
 	},
@@ -53,7 +59,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-O3 -DNDEBUG  "
+					"fragment" : "-g  "
 				},
 				{
 					"fragment" : "-std=gnu++17"
@@ -68,6 +74,10 @@
 				{
 					"backtrace" : 4,
 					"path" : "/home/zhang/sllll/my/RTree-main/hom_matVecMul"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/zhang/sllll/my/RTree-main/deps/eigen"
 				}
 			],
 			"language" : "CXX",

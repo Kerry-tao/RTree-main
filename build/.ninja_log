@@ -1,0 +1,16 @@
+# ninja log v5
+3	781	1719954212005926014	hom_matVecMul/CMakeFiles/gemini.dir/types.cc.o	80d8a44ac51085d7
+3	1769	1719954212993969683	hom_matVecMul/CMakeFiles/gemini.dir/matVecMul.cpp.o	19611e50b62ef6c4
+2	377	1719954211601908158	CMakeFiles/allproject.dir/main.cpp.o	f2c0874eaba832d
+1	54	1719954211217891186	build.ninja	5591a0bc9e4a4db6
+2	377	1719954211601908158	RTree/CMakeFiles/RTree.dir/Node.cpp.o	f9b871d77d628506
+3	199	1719954211425900379	hom_matVecMul/CMakeFiles/gemini.dir/logging.cc.o	4b53c84f5af2cf4f
+1836	1885	1719954213109974809	hom_matVecMul/test_hom_matVec	4e2278f6390129ff
+2	419	1719954211645910103	RTree/CMakeFiles/RTree.dir/RTree.cpp.o	d84779a14a3efd91
+3	191	1719954211417900026	hom_matVecMul/CMakeFiles/gemini.dir/tensor_shape.cc.o	454c754c156e766b
+429	468	1719954211693912225	allproject	cd5e694c0c4fd028
+2	1583	1719954212805961373	hom_matVecMul/CMakeFiles/test_hom_matVec.dir/test_hom_matVec.cpp.o	530b40a631d3c1e5
+419	429	1719954211653910457	RTree/libRTree.a	af08ddc74157e029
+3	747	1719954211973924600	hom_matVecMul/CMakeFiles/gemini.dir/math.cc.o	2b2658f535ae885d
+1769	1836	1719954213061972688	hom_matVecMul/libgemini.so	23dc86999ed678b
+3	837	1719954212061928489	hom_matVecMul/CMakeFiles/gemini.dir/shape_inference.cc.o	e77cd62c1b441071
