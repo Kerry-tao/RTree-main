@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/hom_matVecMul/hom_matVecMul/test_hom_matVec",
+            "program": "${workspaceFolder}/build/Search/Search/protocol",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

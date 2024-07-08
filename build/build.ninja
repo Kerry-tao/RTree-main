@@ -181,39 +181,6 @@ build hom_matVecMul/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
 build hom_matVecMul/edit_cache: phony hom_matVecMul/CMakeFiles/edit_cache.util
 
 # =============================================================================
-# Object build statements for EXECUTABLE target test_hom_matVec
-
-
-#############################################
-# Order-only phony target for test_hom_matVec
-
-build cmake_object_order_depends_target_test_hom_matVec: phony || cmake_object_order_depends_target_gemini
-
-build hom_matVecMul/CMakeFiles/test_hom_matVec.dir/test_hom_matVec.cpp.o: CXX_COMPILER__test_hom_matVec ../hom_matVecMul/test_hom_matVec.cpp || cmake_object_order_depends_target_test_hom_matVec
-  DEP_FILE = hom_matVecMul/CMakeFiles/test_hom_matVec.dir/test_hom_matVec.cpp.o.d
-  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
-  OBJECT_DIR = hom_matVecMul/CMakeFiles/test_hom_matVec.dir
-  OBJECT_FILE_DIR = hom_matVecMul/CMakeFiles/test_hom_matVec.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target test_hom_matVec
-
-
-#############################################
-# Link the executable hom_matVecMul/test_hom_matVec
-
-build hom_matVecMul/test_hom_matVec: CXX_EXECUTABLE_LINKER__test_hom_matVec hom_matVecMul/CMakeFiles/test_hom_matVec.dir/test_hom_matVec.cpp.o | hom_matVecMul/libgemini.so /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a ../hom_matVecMul/../build/lib/libhexl.a lib/libzstd.a lib/libhexl.a || hom_matVecMul/libgemini.so
-  FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/zhang/sllll/my/RTree-main/build/hom_matVecMul  hom_matVecMul/libgemini.so  /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a  ../hom_matVecMul/../build/lib/libhexl.a  -pthread  lib/libzstd.a  lib/libhexl.a
-  OBJECT_DIR = hom_matVecMul/CMakeFiles/test_hom_matVec.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = hom_matVecMul/test_hom_matVec
-  TARGET_PDB = test_hom_matVec.dbg
-
-# =============================================================================
 # Object build statements for SHARED_LIBRARY target gemini
 
 
@@ -226,7 +193,7 @@ build hom_matVecMul/CMakeFiles/gemini.dir/logging.cc.o: CXX_COMPILER__gemini ../
   DEFINES = -Dgemini_EXPORTS
   DEP_FILE = hom_matVecMul/CMakeFiles/gemini.dir/logging.cc.o.d
   FLAGS = -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
   OBJECT_DIR = hom_matVecMul/CMakeFiles/gemini.dir
   OBJECT_FILE_DIR = hom_matVecMul/CMakeFiles/gemini.dir
 
@@ -234,7 +201,7 @@ build hom_matVecMul/CMakeFiles/gemini.dir/math.cc.o: CXX_COMPILER__gemini ../hom
   DEFINES = -Dgemini_EXPORTS
   DEP_FILE = hom_matVecMul/CMakeFiles/gemini.dir/math.cc.o.d
   FLAGS = -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
   OBJECT_DIR = hom_matVecMul/CMakeFiles/gemini.dir
   OBJECT_FILE_DIR = hom_matVecMul/CMakeFiles/gemini.dir
 
@@ -242,7 +209,7 @@ build hom_matVecMul/CMakeFiles/gemini.dir/shape_inference.cc.o: CXX_COMPILER__ge
   DEFINES = -Dgemini_EXPORTS
   DEP_FILE = hom_matVecMul/CMakeFiles/gemini.dir/shape_inference.cc.o.d
   FLAGS = -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
   OBJECT_DIR = hom_matVecMul/CMakeFiles/gemini.dir
   OBJECT_FILE_DIR = hom_matVecMul/CMakeFiles/gemini.dir
 
@@ -250,7 +217,7 @@ build hom_matVecMul/CMakeFiles/gemini.dir/tensor_shape.cc.o: CXX_COMPILER__gemin
   DEFINES = -Dgemini_EXPORTS
   DEP_FILE = hom_matVecMul/CMakeFiles/gemini.dir/tensor_shape.cc.o.d
   FLAGS = -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
   OBJECT_DIR = hom_matVecMul/CMakeFiles/gemini.dir
   OBJECT_FILE_DIR = hom_matVecMul/CMakeFiles/gemini.dir
 
@@ -258,7 +225,7 @@ build hom_matVecMul/CMakeFiles/gemini.dir/types.cc.o: CXX_COMPILER__gemini ../ho
   DEFINES = -Dgemini_EXPORTS
   DEP_FILE = hom_matVecMul/CMakeFiles/gemini.dir/types.cc.o.d
   FLAGS = -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
   OBJECT_DIR = hom_matVecMul/CMakeFiles/gemini.dir
   OBJECT_FILE_DIR = hom_matVecMul/CMakeFiles/gemini.dir
 
@@ -266,7 +233,7 @@ build hom_matVecMul/CMakeFiles/gemini.dir/matVecMul.cpp.o: CXX_COMPILER__gemini 
   DEFINES = -Dgemini_EXPORTS
   DEP_FILE = hom_matVecMul/CMakeFiles/gemini.dir/matVecMul.cpp.o.d
   FLAGS = -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
   OBJECT_DIR = hom_matVecMul/CMakeFiles/gemini.dir
   OBJECT_FILE_DIR = hom_matVecMul/CMakeFiles/gemini.dir
 
@@ -290,6 +257,67 @@ build hom_matVecMul/libgemini.so: CXX_SHARED_LIBRARY_LINKER__gemini hom_matVecMu
   TARGET_PDB = gemini.so.dbg
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/zhang/sllll/my/RTree-main/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build Search/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/zhang/sllll/my/RTree-main/build/Search && /usr/bin/cmake -S/home/zhang/sllll/my/RTree-main -B/home/zhang/sllll/my/RTree-main/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build Search/rebuild_cache: phony Search/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build Search/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/zhang/sllll/my/RTree-main/build/Search && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build Search/edit_cache: phony Search/CMakeFiles/edit_cache.util
+
+# =============================================================================
+# Object build statements for EXECUTABLE target protocol
+
+
+#############################################
+# Order-only phony target for protocol
+
+build cmake_object_order_depends_target_protocol: phony || cmake_object_order_depends_target_gemini
+
+build Search/CMakeFiles/protocol.dir/protocol.cpp.o: CXX_COMPILER__protocol ../Search/protocol.cpp || cmake_object_order_depends_target_protocol
+  DEP_FILE = Search/CMakeFiles/protocol.dir/protocol.cpp.o.d
+  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  OBJECT_DIR = Search/CMakeFiles/protocol.dir
+  OBJECT_FILE_DIR = Search/CMakeFiles/protocol.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target protocol
+
+
+#############################################
+# Link the executable Search/protocol
+
+build Search/protocol: CXX_EXECUTABLE_LINKER__protocol Search/CMakeFiles/protocol.dir/protocol.cpp.o | hom_matVecMul/libgemini.so /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a lib/libzstd.a lib/libhexl.a || hom_matVecMul/libgemini.so
+  FLAGS = -g
+  LINK_LIBRARIES = -Wl,-rpath,/home/zhang/sllll/my/RTree-main/build/hom_matVecMul  hom_matVecMul/libgemini.so  /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a  -pthread  lib/libzstd.a  lib/libhexl.a
+  OBJECT_DIR = Search/CMakeFiles/protocol.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Search/protocol
+  TARGET_PDB = protocol.dbg
+
+# =============================================================================
 # Target aliases.
 
 build RTree: phony RTree/libRTree.a
@@ -300,7 +328,7 @@ build libRTree.a: phony RTree/libRTree.a
 
 build libgemini.so: phony hom_matVecMul/libgemini.so
 
-build test_hom_matVec: phony hom_matVecMul/test_hom_matVec
+build protocol: phony Search/protocol
 
 # =============================================================================
 # Folder targets.
@@ -310,7 +338,7 @@ build test_hom_matVec: phony hom_matVecMul/test_hom_matVec
 #############################################
 # Folder: /home/zhang/sllll/my/RTree-main/build
 
-build all: phony allproject RTree/all hom_matVecMul/all
+build all: phony allproject RTree/all hom_matVecMul/all Search/all
 
 # =============================================================================
 
@@ -322,9 +350,16 @@ build RTree/all: phony RTree/libRTree.a
 # =============================================================================
 
 #############################################
+# Folder: /home/zhang/sllll/my/RTree-main/build/Search
+
+build Search/all: phony Search/protocol
+
+# =============================================================================
+
+#############################################
 # Folder: /home/zhang/sllll/my/RTree-main/build/hom_matVecMul
 
-build hom_matVecMul/all: phony hom_matVecMul/test_hom_matVec hom_matVecMul/libgemini.so
+build hom_matVecMul/all: phony hom_matVecMul/libgemini.so
 
 # =============================================================================
 # Built-in targets
@@ -338,14 +373,14 @@ default all
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../RTree/CMakeLists.txt ../hom_matVecMul/CMakeLists.txt /usr/share/cmake-3.16/Modules/CMakeCInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /usr/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.16/Modules/CMakeFindDependencyMacro.cmake /usr/share/cmake-3.16/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.16/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.16/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.16/Modules/CheckCSourceCompiles.cmake /usr/share/cmake-3.16/Modules/CheckIncludeFile.cmake /usr/share/cmake-3.16/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU.cmake /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.16/Modules/FindPackageMessage.cmake /usr/share/cmake-3.16/Modules/FindThreads.cmake /usr/share/cmake-3.16/Modules/Internal/CMakeCheckCompilerFlag.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.16/Modules/Platform/Linux.cmake /usr/share/cmake-3.16/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.16.3/CMakeCCompiler.cmake CMakeFiles/3.16.3/CMakeCXXCompiler.cmake CMakeFiles/3.16.3/CMakeSystem.cmake deps/SEAL/cmake/SEALConfig.cmake deps/SEAL/cmake/SEALConfigVersion.cmake deps/SEAL/cmake/SEALTargets.cmake lib/cmake/hexl-1.2.2/HEXLConfig.cmake lib/cmake/hexl-1.2.2/HEXLConfigVersion.cmake lib/cmake/hexl-1.2.2/HEXLTargets-release.cmake lib/cmake/hexl-1.2.2/HEXLTargets.cmake lib/cmake/zstd/zstdConfig.cmake lib/cmake/zstd/zstdConfigVersion.cmake lib/cmake/zstd/zstdTargets-release.cmake lib/cmake/zstd/zstdTargets.cmake share/eigen3/cmake/Eigen3Config.cmake share/eigen3/cmake/Eigen3ConfigVersion.cmake share/eigen3/cmake/Eigen3Targets.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../RTree/CMakeLists.txt ../Search/CMakeLists.txt ../hom_matVecMul/CMakeLists.txt /usr/share/cmake-3.16/Modules/CMakeCInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /usr/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.16/Modules/CMakeFindDependencyMacro.cmake /usr/share/cmake-3.16/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.16/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.16/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.16/Modules/CheckCSourceCompiles.cmake /usr/share/cmake-3.16/Modules/CheckIncludeFile.cmake /usr/share/cmake-3.16/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU.cmake /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.16/Modules/FindPackageMessage.cmake /usr/share/cmake-3.16/Modules/FindThreads.cmake /usr/share/cmake-3.16/Modules/Internal/CMakeCheckCompilerFlag.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.16/Modules/Platform/Linux.cmake /usr/share/cmake-3.16/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.16.3/CMakeCCompiler.cmake CMakeFiles/3.16.3/CMakeCXXCompiler.cmake CMakeFiles/3.16.3/CMakeSystem.cmake deps/SEAL/cmake/SEALConfig.cmake deps/SEAL/cmake/SEALConfigVersion.cmake deps/SEAL/cmake/SEALTargets.cmake deps/eigen/Eigen3Config.cmake deps/eigen/Eigen3ConfigVersion.cmake deps/eigen/Eigen3Targets.cmake lib/cmake/hexl-1.2.2/HEXLConfig.cmake lib/cmake/hexl-1.2.2/HEXLConfigVersion.cmake lib/cmake/hexl-1.2.2/HEXLTargets-release.cmake lib/cmake/hexl-1.2.2/HEXLTargets.cmake lib/cmake/zstd/zstdConfig.cmake lib/cmake/zstd/zstdConfigVersion.cmake lib/cmake/zstd/zstdTargets-release.cmake lib/cmake/zstd/zstdTargets.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt ../RTree/CMakeLists.txt ../hom_matVecMul/CMakeLists.txt /usr/share/cmake-3.16/Modules/CMakeCInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /usr/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.16/Modules/CMakeFindDependencyMacro.cmake /usr/share/cmake-3.16/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.16/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.16/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.16/Modules/CheckCSourceCompiles.cmake /usr/share/cmake-3.16/Modules/CheckIncludeFile.cmake /usr/share/cmake-3.16/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU.cmake /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.16/Modules/FindPackageMessage.cmake /usr/share/cmake-3.16/Modules/FindThreads.cmake /usr/share/cmake-3.16/Modules/Internal/CMakeCheckCompilerFlag.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.16/Modules/Platform/Linux.cmake /usr/share/cmake-3.16/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.16.3/CMakeCCompiler.cmake CMakeFiles/3.16.3/CMakeCXXCompiler.cmake CMakeFiles/3.16.3/CMakeSystem.cmake deps/SEAL/cmake/SEALConfig.cmake deps/SEAL/cmake/SEALConfigVersion.cmake deps/SEAL/cmake/SEALTargets.cmake lib/cmake/hexl-1.2.2/HEXLConfig.cmake lib/cmake/hexl-1.2.2/HEXLConfigVersion.cmake lib/cmake/hexl-1.2.2/HEXLTargets-release.cmake lib/cmake/hexl-1.2.2/HEXLTargets.cmake lib/cmake/zstd/zstdConfig.cmake lib/cmake/zstd/zstdConfigVersion.cmake lib/cmake/zstd/zstdTargets-release.cmake lib/cmake/zstd/zstdTargets.cmake share/eigen3/cmake/Eigen3Config.cmake share/eigen3/cmake/Eigen3ConfigVersion.cmake share/eigen3/cmake/Eigen3Targets.cmake: phony
+build ../CMakeLists.txt ../RTree/CMakeLists.txt ../Search/CMakeLists.txt ../hom_matVecMul/CMakeLists.txt /usr/share/cmake-3.16/Modules/CMakeCInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /usr/share/cmake-3.16/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.16/Modules/CMakeFindDependencyMacro.cmake /usr/share/cmake-3.16/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.16/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.16/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.16/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.16/Modules/CheckCSourceCompiles.cmake /usr/share/cmake-3.16/Modules/CheckIncludeFile.cmake /usr/share/cmake-3.16/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.16/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Compiler/GNU.cmake /usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.16/Modules/FindPackageMessage.cmake /usr/share/cmake-3.16/Modules/FindThreads.cmake /usr/share/cmake-3.16/Modules/Internal/CMakeCheckCompilerFlag.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.16/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.16/Modules/Platform/Linux.cmake /usr/share/cmake-3.16/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.16.3/CMakeCCompiler.cmake CMakeFiles/3.16.3/CMakeCXXCompiler.cmake CMakeFiles/3.16.3/CMakeSystem.cmake deps/SEAL/cmake/SEALConfig.cmake deps/SEAL/cmake/SEALConfigVersion.cmake deps/SEAL/cmake/SEALTargets.cmake deps/eigen/Eigen3Config.cmake deps/eigen/Eigen3ConfigVersion.cmake deps/eigen/Eigen3Targets.cmake lib/cmake/hexl-1.2.2/HEXLConfig.cmake lib/cmake/hexl-1.2.2/HEXLConfigVersion.cmake lib/cmake/hexl-1.2.2/HEXLTargets-release.cmake lib/cmake/hexl-1.2.2/HEXLTargets.cmake lib/cmake/zstd/zstdConfig.cmake lib/cmake/zstd/zstdConfigVersion.cmake lib/cmake/zstd/zstdTargets-release.cmake lib/cmake/zstd/zstdTargets.cmake: phony
 
 
 #############################################

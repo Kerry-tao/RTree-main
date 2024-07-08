@@ -34,6 +34,7 @@ find_package(SEAL 3.7 REQUIRED)  # 确保版本号与你安装的SEAL版本匹�
 
 add_subdirectory(RTree)
 add_subdirectory(hom_matVecMul)
+add_subdirectory(Search)
 
 add_executable(allproject main.cpp)
 

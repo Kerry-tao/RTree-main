@@ -310,7 +310,7 @@ Code HomFCSS::encryptInputVector(
 }
 
 //输出是明文对象（从<seal::Plaintext> &encoded_share中看出来的）
-/**Code HomFCSS::encodeInputVector(const Tensor<uint64_t> &input_vector,
+Code HomFCSS::encodeInputVector(const Tensor<uint64_t> &input_vector,
                                 const Meta &meta,
                                 std::vector<seal::Plaintext> &encoded_share) const {
   ENSURE_OR_RETURN(context_, Code::ERR_CONFIG);
@@ -330,11 +330,11 @@ Code HomFCSS::encryptInputVector(
   Role encode_role = Role::none;  // BFV/BGV not use this role
   encoded_share.resize(nout);
 
-  auto encode_prg = [&](long wid, size_t start, size_t end) {
+  //auto encode_prg = [&](long wid, size_t start, size_t end) {
     std::vector<uint64_t> tmp(poly_degree());
     const uint64_t plain = plain_modulus();
     bool is_failed = false;
-    for (size_t i = start; i < end && !is_failed; ++i) {
+    for (size_t i = 0; i < nout && !is_failed; ++i) {
       auto start = i * split_shape.cols();
       auto end =
           std::min<size_t>(input_vector.length(), start + split_shape.cols());
@@ -355,11 +355,11 @@ Code HomFCSS::encryptInputVector(
     }
     seal::util::seal_memzero(tmp.data(), sizeof(uint64_t) * tmp.size());
     return is_failed ? Code::ERR_INTERNAL : Code::OK;
-  };
+  //};
 
-  gemini::ThreadPool tpool(nthreads);
-  return LaunchWorks(tpool, nout, encode_prg);
-}*/
+  //gemini::ThreadPool tpool(nthreads);
+  //return LaunchWorks(tpool, nout, encode_prg);
+}
 //const Meta &meta: 包含权重矩阵形状等元数据的结构。输出是明文（因为<seal::Plaintext>> &encoded_share）
 
 //const Meta &meta: 包含权重矩阵形状等元数据的结构。输出是密文（因为seal::Serializable<seal::Ciphertext> &encrypted_share)
@@ -602,6 +602,170 @@ Code HomFCSS::matVecMul(const std::vector<std::vector<seal::Ciphertext>> &matrix
 }
 
 
+//用于将一个向量形式的随机数r变成多项式，再加密的函数。只是去掉了meta.weight_shape的判断，其他跟encryptInputVector（）都一样
+Code HomFCSS::encryptOneValue(
+    const Tensor<uint64_t> &input_vector, const Meta &meta,
+    std::vector<seal::Serializable<seal::Ciphertext>> &encrypted_share) const {
+  ENSURE_OR_RETURN(context_ && encryptor_, Code::ERR_CONFIG);
+  ENSURE_OR_RETURN(input_vector.shape().IsSameSize(meta.input_shape),
+                   Code::ERR_DIM_MISMATCH);
+  ENSURE_OR_RETURN(meta.input_shape.num_elements() > 0, Code::ERR_INVALID_ARG);
+
+  const bool is_ckks = scheme() == seal::scheme_type::ckks;
+  ENSURE_OR_RETURN(!is_ckks, Code::ERR_INTERNAL);
+
+  //nout=6/3=2，也就是要生成2个密文多项式
+  auto nout = 1;
+
+  Role encode_role = Role::none;  // BFV/BGV not use this role
+  //初始化密文向量，预填充使用加密器生成的零值密文
+  encrypted_share.resize(nout, encryptor_->encrypt_zero());
+
+  seal::Plaintext pt;
+  //tmp 数组的大小是度N
+  std::vector<uint64_t> tmp(poly_degree());
+  const uint64_t plain = plain_modulus();
+  bool is_failed = false;
+  for (size_t i = 0; i < nout && !is_failed; ++i) {
+    auto start = i;
+    auto end =
+        std::min<size_t>(input_vector.length(), start + nout);
+    auto len = end - start;
+    // reversed ordering for the vector（这里是为了实现映射函数\tau^v'=b0-0x-0x^2-b2x^3-b1x^4）
+
+    //例如输入向量 input_vector=[3, 5, 7, 2, 9]，若start=0，end=3，那么要处理的元素就是[b0,b1,b2]=[3,5,7]，此时tmp[0]=3
+    tmp[0] = input_vector(start);
+
+    //若start=0，end=3，那么输入元素5，计算-5：10 - 5 = 5。输入元素7，计算-7：10 - 7 = 3。
+    //也就是tmp.size()=N=5，第一个元素保持b0=3不变，然后将其余元素逆序排列再放回tmp中，不够的补0，最后tmp=[3,0,0,3,5]。
+    //input_vector.data() + start + 1 = 1, input_vector.data() + end = 3(不包括3)
+    std::transform(input_vector.data() + start + 1, input_vector.data() + end,
+                   tmp.rbegin(),
+                   [plain](uint64_t u) { return u > 0 ? plain - u : 0; });
+    if (len < tmp.size()) {
+      //不够的补0
+      std::fill_n(tmp.rbegin() + len, tmp.size() - len - 1, 0);
+    }
+
+    //经过vec2Poly函数后得到多项式f=3+0X+...+0X+3X^6+5X^7
+    if (Code::OK != vec2Poly(tmp.data(), tmp.size(), pt, encode_role, false)) {
+      is_failed = true;
+    } else {
+      try {
+        //使用 encryptor_ 对象对明文 pt 进行对称加密，并将结果存储在 encrypted_share 的相应位置。
+        encrypted_share.at(i) = encryptor_->encrypt_symmetric(pt);
+      } catch (const std::logic_error &e) {
+        is_failed = true;
+      }
+    }
+  }
+
+  // erase the sensitive data
+  seal::util::seal_memzero(tmp.data(), sizeof(uint64_t) * tmp.size());
+  seal::util::seal_memzero(pt.data(), sizeof(uint64_t) * pt.coeff_count());
+
+  if (is_failed) {
+    return Code::ERR_INTERNAL;
+  } else {
+    return Code::OK;
+  }
+}
+
+
+//将一个向量形式的随机数编码为多项式，只是去掉了meta.weight_shape的判断，其他跟encodeInputVector（）都一样
+Code HomFCSS::encodeOneValue(const Tensor<uint64_t> &input_vector,
+                                const Meta &meta,
+                                std::vector<seal::Plaintext> &encoded_share) const {
+  ENSURE_OR_RETURN(context_, Code::ERR_CONFIG);
+  ENSURE_OR_RETURN(input_vector.shape().IsSameSize(meta.input_shape),
+                   Code::ERR_DIM_MISMATCH);
+  ENSURE_OR_RETURN(meta.input_shape.num_elements() > 0, Code::ERR_INVALID_ARG);
+
+  const bool is_ckks = scheme() == seal::scheme_type::ckks;
+  ENSURE_OR_RETURN(!is_ckks, Code::ERR_INTERNAL);
+
+  auto nout = 1;
+
+  Role encode_role = Role::none;  // BFV/BGV not use this role
+  encoded_share.resize(nout);
+
+  //auto encode_prg = [&](long wid, size_t start, size_t end) {
+    std::vector<uint64_t> tmp(poly_degree());
+    const uint64_t plain = plain_modulus();
+    bool is_failed = false;
+    for (size_t i = 0; i < nout && !is_failed; ++i) {
+      auto start = i ;
+      auto end =
+          std::min<size_t>(input_vector.length(), start + nout);
+      auto len = end - start;
+
+      // reversed ordering for the vector
+      tmp[0] = input_vector(start);
+      std::transform(input_vector.data() + start + 1, input_vector.data() + end,
+                     tmp.rbegin(),
+                     [plain](uint64_t u) { return u > 0 ? plain - u : 0; });
+      if (len < tmp.size()) {
+        std::fill_n(tmp.rbegin() + len, tmp.size() - len - 1, 0);
+      }
+      if (Code::OK != vec2Poly(tmp.data(), tmp.size(), encoded_share.at(i),
+                               encode_role, false)) {
+        is_failed = true;
+      }
+    }
+    seal::util::seal_memzero(tmp.data(), sizeof(uint64_t) * tmp.size());
+    return is_failed ? Code::ERR_INTERNAL : Code::OK;
+  //};
+
+  //gemini::ThreadPool tpool(nthreads);
+  //return LaunchWorks(tpool, nout, encode_prg);
+}
+
+//将一个向量按照顺序编码成多项式，只存在encoded_share[0]中
+Code HomFCSS::encodeInputVectorPositiveSequence(const Tensor<uint64_t> &input_vector,
+                                const Meta &meta,
+                               std::vector<seal::Plaintext> &encoded_share) const {
+  ENSURE_OR_RETURN(context_, Code::ERR_CONFIG);  
+  ENSURE_OR_RETURN(input_vector.shape().IsSameSize(meta.input_shape),
+                   Code::ERR_DIM_MISMATCH);
+  ENSURE_OR_RETURN(meta.input_shape.num_elements() > 0, Code::ERR_INVALID_ARG);
+
+  const bool is_ckks = scheme() == seal::scheme_type::ckks;
+  ENSURE_OR_RETURN(!is_ckks, Code::ERR_INTERNAL);
+  auto nout = 1;
+
+  Role encode_role = Role::none;  // BFV/BGV not use this role
+  encoded_share.resize(nout);
+
+  //auto encode_prg = [&](long wid, size_t start, size_t end) {
+    std::vector<uint64_t> tmp(poly_degree());
+    const uint64_t plain = plain_modulus();
+    bool is_failed = false;
+    for (size_t i = 0; i < nout && !is_failed; ++i) {
+      auto start = i;
+      //auto end = std::min<size_t>(input_vector.length(), start+ nout);
+      //auto len = end - start;
+
+      size_t end = input_vector.length();
+      auto len = end - start;
+
+      // 正常顺序填充向量
+      std::copy(input_vector.data() + start, input_vector.data() + end, tmp.begin());
+      if (len < tmp.size()) {
+        std::fill(tmp.begin() + len, tmp.end(), 0);  // 从结束点到tmp的末尾填充0
+      }
+      if (Code::OK != vec2Poly(tmp.data(), tmp.size(), encoded_share.at(i),
+                           encode_role, false)) {
+        is_failed = true;
+        }
+    }
+
+    seal::util::seal_memzero(tmp.data(), sizeof(uint64_t) * tmp.size());
+    return is_failed ? Code::ERR_INTERNAL : Code::OK;
+  //};
+
+  //gemini::ThreadPool tpool(nthreads);
+  //return LaunchWorks(tpool, nout, encode_prg);
+}
 
 Code HomFCSS::addRandomMask(std::vector<seal::Ciphertext> &cts,
                             Tensor<uint64_t> &mask_vector, const Meta &meta) const {

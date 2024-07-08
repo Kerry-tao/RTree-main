@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/allproject.dir/main.cpp.o  -o allproject  RTree/libRTree.a /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a ../lib/libhexl.a -pthread ../lib/libzstd.a ../lib/libhexl.a 

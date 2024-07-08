@@ -1,0 +1,209 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "Search/protocol"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"Search/CMakeLists.txt",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 20,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 25,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 3,
+				"parent" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 4,
+				"parent" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 14,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 5,
+				"parent" : 3
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g  "
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-pthread"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-Wno-unknown-warning"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-Wno-unknown-warning-option"
+				},
+				{
+					"fragment" : "-std=gnu++17"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "/home/zhang/sllll/my/RTree-main/RTree"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/home/zhang/sllll/my/RTree-main/hom_matVecMul"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "/home/zhang/sllll/my/RTree-main/../hom_matVecMul"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "/home/zhang/sllll/my/RTree-main/deps/eigen"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/zhang/sllll/my/RTree-main/build/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "gemini::@4a102eb4070bd6d679ef"
+		}
+	],
+	"id" : "protocol::@0e482f150a88e928c24d",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/home/zhang/sllll/my/RTree-main/build/hom_matVecMul",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "../hom_matVecMul/libgemini.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-pthread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../lib/libzstd.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../lib/libhexl.a",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "protocol",
+	"nameOnDisk" : "protocol",
+	"paths" : 
+	{
+		"build" : "Search",
+		"source" : "Search"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Search/protocol.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

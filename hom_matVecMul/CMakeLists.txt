@@ -79,6 +79,7 @@ message(STATUS "HEXL library found: ${HEXL_FOUND}")
 #find_package(HEXL REQUIRED)
 
 add_library(gemini SHARED ${SOURCES})
+#set(LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../build/lib)
 target_link_libraries(gemini SEAL::seal Eigen3::Eigen)
 
 
@@ -86,8 +87,8 @@ target_link_libraries(gemini SEAL::seal Eigen3::Eigen)
 include_directories(${CMAKE_SOURCE_DIR} ${SEAL_INCLUDE_DIRS})
 
 # 生成可执行文件
-add_executable(test_hom_matVec test_hom_matVec.cpp)
+#add_executable(test_hom_matVec test_hom_matVec.cpp)
 
 # 链接 SEAL 库
-target_link_libraries(test_hom_matVec gemini SEAL::seal ${CMAKE_CURRENT_SOURCE_DIR}/../build/lib/libhexl.a)
-link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../build/lib)
+#target_link_libraries(test_hom_matVec gemini SEAL::seal ${CMAKE_CURRENT_SOURCE_DIR}/../build/lib/libhexl.a)
+#link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../build/lib)

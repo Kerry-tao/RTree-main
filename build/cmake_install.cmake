@@ -47,6 +47,11 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/zhang/sllll/my/RTree-main/build/hom_matVecMul/cmake_install.cmake")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/zhang/sllll/my/RTree-main/build/Search/cmake_install.cmake")
+endif()
+
 if(CMAKE_INSTALL_COMPONENT)
   set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 else()

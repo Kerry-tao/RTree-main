@@ -1,61 +1,61 @@
 [
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++   -I../RTree -I../hom_matVecMul -I../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o CMakeFiles/allproject.dir/main.cpp.o -c /home/zhang/sllll/my/RTree-main/main.cpp",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o CMakeFiles/allproject.dir/main.cpp.o -c /home/zhang/sllll/my/RTree-main/main.cpp",
   "file": "/home/zhang/sllll/my/RTree-main/main.cpp"
 },
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++   -I../RTree -I../hom_matVecMul -I../deps/eigen  -g   -std=gnu++17 -o RTree/CMakeFiles/RTree.dir/RTree.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/RTree.cpp",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../deps/eigen  -g   -std=gnu++17 -o RTree/CMakeFiles/RTree.dir/RTree.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/RTree.cpp",
   "file": "/home/zhang/sllll/my/RTree-main/RTree/RTree.cpp"
 },
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++   -I../RTree -I../hom_matVecMul -I../deps/eigen  -g   -std=gnu++17 -o RTree/CMakeFiles/RTree.dir/Node.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/Node.cpp",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../deps/eigen  -g   -std=gnu++17 -o RTree/CMakeFiles/RTree.dir/Node.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/Node.cpp",
   "file": "/home/zhang/sllll/my/RTree-main/RTree/Node.cpp"
 },
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++   -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/test_hom_matVec.dir/test_hom_matVec.cpp.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/test_hom_matVec.cpp",
-  "file": "/home/zhang/sllll/my/RTree-main/hom_matVecMul/test_hom_matVec.cpp"
-},
-
-{
-  "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/logging.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/logging.cc",
+  "command": "/usr/bin/g++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/logging.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/logging.cc",
   "file": "/home/zhang/sllll/my/RTree-main/hom_matVecMul/logging.cc"
 },
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/math.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/math.cc",
+  "command": "/usr/bin/g++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/math.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/math.cc",
   "file": "/home/zhang/sllll/my/RTree-main/hom_matVecMul/math.cc"
 },
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/shape_inference.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/shape_inference.cc",
+  "command": "/usr/bin/g++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/shape_inference.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/shape_inference.cc",
   "file": "/home/zhang/sllll/my/RTree-main/hom_matVecMul/shape_inference.cc"
 },
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/tensor_shape.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/tensor_shape.cc",
+  "command": "/usr/bin/g++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/tensor_shape.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/tensor_shape.cc",
   "file": "/home/zhang/sllll/my/RTree-main/hom_matVecMul/tensor_shape.cc"
 },
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/types.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/types.cc",
+  "command": "/usr/bin/g++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/types.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/types.cc",
   "file": "/home/zhang/sllll/my/RTree-main/hom_matVecMul/types.cc"
 },
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/c++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../deps/eigen -I../ -isystem include/eigen3 -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/matVecMul.cpp.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/matVecMul.cpp",
+  "command": "/usr/bin/g++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/matVecMul.cpp.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/matVecMul.cpp",
   "file": "/home/zhang/sllll/my/RTree-main/hom_matVecMul/matVecMul.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o Search/CMakeFiles/protocol.dir/protocol.cpp.o -c /home/zhang/sllll/my/RTree-main/Search/protocol.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/Search/protocol.cpp"
 }
 ]
