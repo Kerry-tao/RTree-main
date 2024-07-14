@@ -31,9 +31,8 @@ find_package(SEAL 3.7 REQUIRED)  # 确保版本号与你安装的SEAL版本匹�
 
 
 #file(GLOB SRC ${CMAKE_CURRENT_SOURCE_DIR}/RTree/*.cpp)
-
-add_subdirectory(RTree)
 add_subdirectory(hom_matVecMul)
+add_subdirectory(RTree)
 add_subdirectory(Search)
 
 add_executable(allproject main.cpp)
@@ -41,7 +40,7 @@ add_executable(allproject main.cpp)
 
 
 
-target_link_libraries(allproject RTree SEAL::seal ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libhexl.a)
+target_link_libraries(allproject SEAL::seal ${CMAKE_CURRENT_SOURCE_DIR}/build/lib/libhexl.a)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/build/lib)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/RTree)
 #target_link_libraries(allproject RTree hom_matVecMul)

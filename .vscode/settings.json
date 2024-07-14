@@ -61,6 +61,10 @@
         "streambuf": "cpp",
         "thread": "cpp",
         "typeinfo": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "regex": "cpp",
+        "codecvt": "cpp",
+        "tensor": "cpp",
+        "climits": "cpp"
     }
 }

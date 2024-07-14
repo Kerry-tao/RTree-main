@@ -506,7 +506,7 @@ int main() {
     print_plaintext(max_plain);*/
 
     //用于测试PPCR协议
-// 初始化加密参数
+    // 初始化加密参数
     EncryptionParameters parms(scheme_type::bfv);
     size_t poly_modulus_degree = 8192;  // 修改多项式模数度以提供更大的容错空间
     parms.set_poly_modulus_degree(poly_modulus_degree);

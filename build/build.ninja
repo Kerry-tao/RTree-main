@@ -59,7 +59,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 #############################################
 # Order-only phony target for allproject
 
-build cmake_object_order_depends_target_allproject: phony || cmake_object_order_depends_target_RTree
+build cmake_object_order_depends_target_allproject: phony || CMakeFiles/allproject.dir
 
 build CMakeFiles/allproject.dir/main.cpp.o: CXX_COMPILER__allproject ../main.cpp || cmake_object_order_depends_target_allproject
   DEP_FILE = CMakeFiles/allproject.dir/main.cpp.o.d
@@ -76,81 +76,14 @@ build CMakeFiles/allproject.dir/main.cpp.o: CXX_COMPILER__allproject ../main.cpp
 #############################################
 # Link the executable allproject
 
-build allproject: CXX_EXECUTABLE_LINKER__allproject CMakeFiles/allproject.dir/main.cpp.o | RTree/libRTree.a /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a lib/libhexl.a lib/libzstd.a lib/libhexl.a || RTree/libRTree.a
+build allproject: CXX_EXECUTABLE_LINKER__allproject CMakeFiles/allproject.dir/main.cpp.o | /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a lib/libhexl.a lib/libzstd.a lib/libhexl.a
   FLAGS = -g
-  LINK_LIBRARIES = RTree/libRTree.a  /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a  lib/libhexl.a  -pthread  lib/libzstd.a  lib/libhexl.a
+  LINK_LIBRARIES = /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a  lib/libhexl.a  -pthread  lib/libzstd.a  lib/libhexl.a
   OBJECT_DIR = CMakeFiles/allproject.dir
   POST_BUILD = :
   PRE_LINK = :
   TARGET_FILE = allproject
   TARGET_PDB = allproject.dbg
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /home/zhang/sllll/my/RTree-main/CMakeLists.txt
-# =============================================================================
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build RTree/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/zhang/sllll/my/RTree-main/build/RTree && /usr/bin/cmake -S/home/zhang/sllll/my/RTree-main -B/home/zhang/sllll/my/RTree-main/build
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build RTree/rebuild_cache: phony RTree/CMakeFiles/rebuild_cache.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build RTree/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/zhang/sllll/my/RTree-main/build/RTree && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-  DESC = No interactive CMake dialog available...
-  restat = 1
-
-build RTree/edit_cache: phony RTree/CMakeFiles/edit_cache.util
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target RTree
-
-
-#############################################
-# Order-only phony target for RTree
-
-build cmake_object_order_depends_target_RTree: phony || RTree/CMakeFiles/RTree.dir
-
-build RTree/CMakeFiles/RTree.dir/RTree.cpp.o: CXX_COMPILER__RTree ../RTree/RTree.cpp || cmake_object_order_depends_target_RTree
-  DEP_FILE = RTree/CMakeFiles/RTree.dir/RTree.cpp.o.d
-  FLAGS = -g   -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../deps/eigen
-  OBJECT_DIR = RTree/CMakeFiles/RTree.dir
-  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree.dir
-
-build RTree/CMakeFiles/RTree.dir/Node.cpp.o: CXX_COMPILER__RTree ../RTree/Node.cpp || cmake_object_order_depends_target_RTree
-  DEP_FILE = RTree/CMakeFiles/RTree.dir/Node.cpp.o.d
-  FLAGS = -g   -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../deps/eigen
-  OBJECT_DIR = RTree/CMakeFiles/RTree.dir
-  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree.dir
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target RTree
-
-
-#############################################
-# Link the static library RTree/libRTree.a
-
-build RTree/libRTree.a: CXX_STATIC_LIBRARY_LINKER__RTree RTree/CMakeFiles/RTree.dir/RTree.cpp.o RTree/CMakeFiles/RTree.dir/Node.cpp.o
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = RTree/CMakeFiles/RTree.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = RTree/libRTree.a
-  TARGET_PDB = RTree.a.dbg
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -265,6 +198,116 @@ build hom_matVecMul/libgemini.so: CXX_SHARED_LIBRARY_LINKER__gemini hom_matVecMu
 #############################################
 # Utility command for rebuild_cache
 
+build RTree/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/zhang/sllll/my/RTree-main/build/RTree && /usr/bin/cmake -S/home/zhang/sllll/my/RTree-main -B/home/zhang/sllll/my/RTree-main/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build RTree/rebuild_cache: phony RTree/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build RTree/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/zhang/sllll/my/RTree-main/build/RTree && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build RTree/edit_cache: phony RTree/CMakeFiles/edit_cache.util
+
+# =============================================================================
+# Object build statements for EXECUTABLE target RTree_main
+
+
+#############################################
+# Order-only phony target for RTree_main
+
+build cmake_object_order_depends_target_RTree_main: phony || cmake_object_order_depends_target_gemini
+
+build RTree/CMakeFiles/RTree_main.dir/main.cpp.o: CXX_COMPILER__RTree_main ../RTree/main.cpp || cmake_object_order_depends_target_RTree_main
+  DEP_FILE = RTree/CMakeFiles/RTree_main.dir/main.cpp.o.d
+  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  OBJECT_DIR = RTree/CMakeFiles/RTree_main.dir
+  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree_main.dir
+
+build RTree/CMakeFiles/RTree_main.dir/RTree.cpp.o: CXX_COMPILER__RTree_main ../RTree/RTree.cpp || cmake_object_order_depends_target_RTree_main
+  DEP_FILE = RTree/CMakeFiles/RTree_main.dir/RTree.cpp.o.d
+  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  OBJECT_DIR = RTree/CMakeFiles/RTree_main.dir
+  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree_main.dir
+
+build RTree/CMakeFiles/RTree_main.dir/Node.cpp.o: CXX_COMPILER__RTree_main ../RTree/Node.cpp || cmake_object_order_depends_target_RTree_main
+  DEP_FILE = RTree/CMakeFiles/RTree_main.dir/Node.cpp.o.d
+  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  OBJECT_DIR = RTree/CMakeFiles/RTree_main.dir
+  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree_main.dir
+
+build RTree/CMakeFiles/RTree_main.dir/DataProcessor.cpp.o: CXX_COMPILER__RTree_main ../RTree/DataProcessor.cpp || cmake_object_order_depends_target_RTree_main
+  DEP_FILE = RTree/CMakeFiles/RTree_main.dir/DataProcessor.cpp.o.d
+  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  OBJECT_DIR = RTree/CMakeFiles/RTree_main.dir
+  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree_main.dir
+
+build RTree/CMakeFiles/RTree_main.dir/EncRTree.cpp.o: CXX_COMPILER__RTree_main ../RTree/EncRTree.cpp || cmake_object_order_depends_target_RTree_main
+  DEP_FILE = RTree/CMakeFiles/RTree_main.dir/EncRTree.cpp.o.d
+  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  OBJECT_DIR = RTree/CMakeFiles/RTree_main.dir
+  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree_main.dir
+
+build RTree/CMakeFiles/RTree_main.dir/EncNode.cpp.o: CXX_COMPILER__RTree_main ../RTree/EncNode.cpp || cmake_object_order_depends_target_RTree_main
+  DEP_FILE = RTree/CMakeFiles/RTree_main.dir/EncNode.cpp.o.d
+  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  OBJECT_DIR = RTree/CMakeFiles/RTree_main.dir
+  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree_main.dir
+
+build RTree/CMakeFiles/RTree_main.dir/DataOutsourcing.cpp.o: CXX_COMPILER__RTree_main ../RTree/DataOutsourcing.cpp || cmake_object_order_depends_target_RTree_main
+  DEP_FILE = RTree/CMakeFiles/RTree_main.dir/DataOutsourcing.cpp.o.d
+  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  OBJECT_DIR = RTree/CMakeFiles/RTree_main.dir
+  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree_main.dir
+
+build RTree/CMakeFiles/RTree_main.dir/Token.cpp.o: CXX_COMPILER__RTree_main ../RTree/Token.cpp || cmake_object_order_depends_target_RTree_main
+  DEP_FILE = RTree/CMakeFiles/RTree_main.dir/Token.cpp.o.d
+  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
+  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
+  OBJECT_DIR = RTree/CMakeFiles/RTree_main.dir
+  OBJECT_FILE_DIR = RTree/CMakeFiles/RTree_main.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target RTree_main
+
+
+#############################################
+# Link the executable RTree/RTree_main
+
+build RTree/RTree_main: CXX_EXECUTABLE_LINKER__RTree_main RTree/CMakeFiles/RTree_main.dir/main.cpp.o RTree/CMakeFiles/RTree_main.dir/RTree.cpp.o RTree/CMakeFiles/RTree_main.dir/Node.cpp.o RTree/CMakeFiles/RTree_main.dir/DataProcessor.cpp.o RTree/CMakeFiles/RTree_main.dir/EncRTree.cpp.o RTree/CMakeFiles/RTree_main.dir/EncNode.cpp.o RTree/CMakeFiles/RTree_main.dir/DataOutsourcing.cpp.o RTree/CMakeFiles/RTree_main.dir/Token.cpp.o | hom_matVecMul/libgemini.so /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a lib/libzstd.a lib/libhexl.a || hom_matVecMul/libgemini.so
+  FLAGS = -g
+  LINK_LIBRARIES = -Wl,-rpath,/home/zhang/sllll/my/RTree-main/build/hom_matVecMul  hom_matVecMul/libgemini.so  /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a  -pthread  lib/libzstd.a  lib/libhexl.a
+  OBJECT_DIR = RTree/CMakeFiles/RTree_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = RTree/RTree_main
+  TARGET_PDB = RTree_main.dbg
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/zhang/sllll/my/RTree-main/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for rebuild_cache
+
 build Search/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
   COMMAND = cd /home/zhang/sllll/my/RTree-main/build/Search && /usr/bin/cmake -S/home/zhang/sllll/my/RTree-main -B/home/zhang/sllll/my/RTree-main/build
   DESC = Running CMake to regenerate build system...
@@ -285,50 +328,13 @@ build Search/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
 build Search/edit_cache: phony Search/CMakeFiles/edit_cache.util
 
 # =============================================================================
-# Object build statements for EXECUTABLE target protocol
-
-
-#############################################
-# Order-only phony target for protocol
-
-build cmake_object_order_depends_target_protocol: phony || cmake_object_order_depends_target_gemini
-
-build Search/CMakeFiles/protocol.dir/protocol.cpp.o: CXX_COMPILER__protocol ../Search/protocol.cpp || cmake_object_order_depends_target_protocol
-  DEP_FILE = Search/CMakeFiles/protocol.dir/protocol.cpp.o.d
-  FLAGS = -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17
-  INCLUDES = -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include
-  OBJECT_DIR = Search/CMakeFiles/protocol.dir
-  OBJECT_FILE_DIR = Search/CMakeFiles/protocol.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target protocol
-
-
-#############################################
-# Link the executable Search/protocol
-
-build Search/protocol: CXX_EXECUTABLE_LINKER__protocol Search/CMakeFiles/protocol.dir/protocol.cpp.o | hom_matVecMul/libgemini.so /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a lib/libzstd.a lib/libhexl.a || hom_matVecMul/libgemini.so
-  FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/zhang/sllll/my/RTree-main/build/hom_matVecMul  hom_matVecMul/libgemini.so  /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/lib/libseal-3.7.a  -pthread  lib/libzstd.a  lib/libhexl.a
-  OBJECT_DIR = Search/CMakeFiles/protocol.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = Search/protocol
-  TARGET_PDB = protocol.dbg
-
-# =============================================================================
 # Target aliases.
 
-build RTree: phony RTree/libRTree.a
+build RTree_main: phony RTree/RTree_main
 
 build gemini: phony hom_matVecMul/libgemini.so
 
-build libRTree.a: phony RTree/libRTree.a
-
 build libgemini.so: phony hom_matVecMul/libgemini.so
-
-build protocol: phony Search/protocol
 
 # =============================================================================
 # Folder targets.
@@ -338,21 +344,21 @@ build protocol: phony Search/protocol
 #############################################
 # Folder: /home/zhang/sllll/my/RTree-main/build
 
-build all: phony allproject RTree/all hom_matVecMul/all Search/all
+build all: phony allproject hom_matVecMul/all RTree/all Search/all
 
 # =============================================================================
 
 #############################################
 # Folder: /home/zhang/sllll/my/RTree-main/build/RTree
 
-build RTree/all: phony RTree/libRTree.a
+build RTree/all: phony RTree/RTree_main
 
 # =============================================================================
 
 #############################################
 # Folder: /home/zhang/sllll/my/RTree-main/build/Search
 
-build Search/all: phony Search/protocol
+build Search/all: phony
 
 # =============================================================================
 

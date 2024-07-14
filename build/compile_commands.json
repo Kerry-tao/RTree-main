@@ -7,18 +7,6 @@
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../deps/eigen  -g   -std=gnu++17 -o RTree/CMakeFiles/RTree.dir/RTree.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/RTree.cpp",
-  "file": "/home/zhang/sllll/my/RTree-main/RTree/RTree.cpp"
-},
-
-{
-  "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../deps/eigen  -g   -std=gnu++17 -o RTree/CMakeFiles/RTree.dir/Node.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/Node.cpp",
-  "file": "/home/zhang/sllll/my/RTree-main/RTree/Node.cpp"
-},
-
-{
-  "directory": "/home/zhang/sllll/my/RTree-main/build",
   "command": "/usr/bin/g++  -Dgemini_EXPORTS -I../RTree -I../hom_matVecMul -I../include/eigen3 -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g -fPIC   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o hom_matVecMul/CMakeFiles/gemini.dir/logging.cc.o -c /home/zhang/sllll/my/RTree-main/hom_matVecMul/logging.cc",
   "file": "/home/zhang/sllll/my/RTree-main/hom_matVecMul/logging.cc"
 },
@@ -55,7 +43,49 @@
 
 {
   "directory": "/home/zhang/sllll/my/RTree-main/build",
-  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o Search/CMakeFiles/protocol.dir/protocol.cpp.o -c /home/zhang/sllll/my/RTree-main/Search/protocol.cpp",
-  "file": "/home/zhang/sllll/my/RTree-main/Search/protocol.cpp"
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o RTree/CMakeFiles/RTree_main.dir/main.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/main.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/main.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o RTree/CMakeFiles/RTree_main.dir/RTree.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/RTree.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/RTree.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o RTree/CMakeFiles/RTree_main.dir/Node.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/Node.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/Node.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o RTree/CMakeFiles/RTree_main.dir/DataProcessor.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/DataProcessor.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/DataProcessor.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o RTree/CMakeFiles/RTree_main.dir/EncRTree.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/EncRTree.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/EncRTree.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o RTree/CMakeFiles/RTree_main.dir/EncNode.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/EncNode.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/EncNode.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o RTree/CMakeFiles/RTree_main.dir/DataOutsourcing.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/DataOutsourcing.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/DataOutsourcing.cpp"
+},
+
+{
+  "directory": "/home/zhang/sllll/my/RTree-main/build",
+  "command": "/usr/bin/g++   -I../RTree -I../hom_matVecMul -I../../hom_matVecMul -I../ -isystem ../deps/eigen -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/deps/SEAL/native/src -isystem /home/zhang/sllll/new-cheetah/OpenCheetah-main/build/deps/SEAL/native/src -isystem include  -g   -pthread -Wno-unknown-warning -Wno-unknown-warning-option -std=gnu++17 -o RTree/CMakeFiles/RTree_main.dir/Token.cpp.o -c /home/zhang/sllll/my/RTree-main/RTree/Token.cpp",
+  "file": "/home/zhang/sllll/my/RTree-main/RTree/Token.cpp"
 }
 ]

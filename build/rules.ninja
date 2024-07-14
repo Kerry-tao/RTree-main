@@ -41,25 +41,6 @@ rule CXX_EXECUTABLE_LINKER__allproject
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__RTree
-  depfile = $DEP_FILE
-  deps = gcc
-  command = /usr/bin/g++  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
-  description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__RTree
-  command = $PRE_LINK && /usr/bin/cmake -E remove $TARGET_FILE && /usr/bin/ar qc $TARGET_FILE $LINK_FLAGS $in && /usr/bin/ranlib $TARGET_FILE && $POST_BUILD
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
-# Rule for compiling CXX files.
-
 rule CXX_COMPILER__gemini
   depfile = $DEP_FILE
   deps = gcc
@@ -79,7 +60,7 @@ rule CXX_SHARED_LIBRARY_LINKER__gemini
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__protocol
+rule CXX_COMPILER__RTree_main
   depfile = $DEP_FILE
   deps = gcc
   command = /usr/bin/g++  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -89,7 +70,7 @@ rule CXX_COMPILER__protocol
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__protocol
+rule CXX_EXECUTABLE_LINKER__RTree_main
   command = $PRE_LINK && /usr/bin/g++  $FLAGS  $LINK_FLAGS $in  -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT

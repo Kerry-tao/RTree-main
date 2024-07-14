@@ -1,2 +1,0 @@
-/usr/bin/ar qc libRTree.a  CMakeFiles/RTree.dir/RTree.cpp.o CMakeFiles/RTree.dir/Node.cpp.o
-/usr/bin/ranlib libRTree.a

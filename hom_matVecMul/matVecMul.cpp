@@ -368,6 +368,7 @@ Code HomFCSS::encryptWeightMatrix(
     std::vector<std::vector<seal::Serializable<seal::Ciphertext>>> &encrypted_share//二维向量
     ) const {
   ENSURE_OR_RETURN(context_, Code::ERR_CONFIG);
+  
   ENSURE_OR_RETURN(weight_matrix.shape().IsSameSize(meta.weight_shape),
                    Code::ERR_DIM_MISMATCH);
   const size_t nrows = meta.weight_shape.rows();

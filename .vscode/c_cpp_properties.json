@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/deps/SEAL/native/src",
                 "${workspaceFolder}/deps/hexl",
-                "${workspaceFolder}/hom_matVecMul"
+                "${workspaceFolder}/hom_matVecMul",
+                "${workspaceFolder}/RTree"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

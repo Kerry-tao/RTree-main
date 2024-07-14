@@ -8,10 +8,11 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/Search/Search/protocol",
+            "program": "${workspaceFolder}/build/RTree/RTree/RTree_main",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            // "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}/build/RTree",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -29,6 +30,5 @@
                 }
             ]
         }
-
     ]
 }

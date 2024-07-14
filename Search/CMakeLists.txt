@@ -17,12 +17,12 @@ include_directories(
 )
 
 # 添加可执行文件
-add_executable(protocol
-    protocol.cpp
-)
+# add_executable(protocol
+#     protocol.cpp
+# )
 
 # 链接SEAL库和gemini库
-target_link_libraries(protocol gemini)
-link_directories(${CMAKE_SOURCE_DIR}/../build/hom_matVecMul/hom_matVecMul)
-link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../build/lib)
+# target_link_libraries(protocol gemini)
+# link_directories(${CMAKE_SOURCE_DIR}/../build/hom_matVecMul/hom_matVecMul)
+# link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../build/lib)
 
