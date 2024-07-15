@@ -224,6 +224,12 @@ RTreeProtocol_BINARY_DIR:STATIC=/home/zhang/sllll/my/RTree-main/build/RTree/Sear
 //Value Computed by CMake
 RTreeProtocol_SOURCE_DIR:STATIC=/home/zhang/sllll/my/RTree-main/Search
 
+//Value Computed by CMake
+RTree_BINARY_DIR:STATIC=/home/zhang/sllll/my/RTree-main/build/RTree/RTree
+
+//Value Computed by CMake
+RTree_SOURCE_DIR:STATIC=/home/zhang/sllll/my/RTree-main/RTree
+
 //The directory containing a CMake configuration file for SEAL.
 SEAL_DIR:PATH=/home/zhang/sllll/my/RTree-main/build/deps/SEAL/cmake
 
@@ -351,7 +357,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

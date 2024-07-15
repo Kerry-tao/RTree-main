@@ -134,6 +134,9 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 //Path to a program.
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
+//No help, variable specified on the command line.
+CMAKE_PREFIX_PATH:UNINITIALIZED=./build
+
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
 
@@ -214,6 +217,9 @@ Eigen3_DIR:PATH=/home/zhang/sllll/my/RTree-main/build/deps/eigen
 //The directory containing a CMake configuration file for HEXL.
 HEXL_DIR:PATH=/home/zhang/sllll/my/RTree-main/build/lib/cmake/hexl-1.2.2
 
+//No help, variable specified on the command line.
+OPENSSL_ROOT_DIR:UNINITIALIZED=/usr/local/opt/openssl
+
 //Value Computed by CMake
 RTreeProtocol_BINARY_DIR:STATIC=/home/zhang/sllll/my/RTree-main/build/Search
 
@@ -226,8 +232,14 @@ RTree_BINARY_DIR:STATIC=/home/zhang/sllll/my/RTree-main/build/RTree
 //Value Computed by CMake
 RTree_SOURCE_DIR:STATIC=/home/zhang/sllll/my/RTree-main/RTree
 
+//No help, variable specified on the command line.
+SCI_BUILD_NETWORKS:UNINITIALIZED=ON
+
 //The directory containing a CMake configuration file for SEAL.
 SEAL_DIR:PATH=/home/zhang/sllll/my/RTree-main/build/deps/SEAL/cmake
+
+//No help, variable specified on the command line.
+USE_APPROX_RESHARE:UNINITIALIZED=ON
 
 //Value Computed by CMake
 hom_matVec_BINARY_DIR:STATIC=/home/zhang/sllll/my/RTree-main/build/hom_matVecMul

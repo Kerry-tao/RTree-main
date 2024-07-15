@@ -6,7 +6,7 @@
 #include <cmath>
 #include <cfloat>
 
-static int maxDimension = 4;
+static int maxDimension = 1300;
 
 struct Point
 {
@@ -52,7 +52,6 @@ public:
 
     RTreeNode(bool isLeaf = true);
     void updateMBR();
-    void updateMBR2();
     void updateVec();
     void updateMatrix();
     void printNode();

@@ -7,7 +7,9 @@
                 "${workspaceFolder}/deps/SEAL/native/src",
                 "${workspaceFolder}/deps/hexl",
                 "${workspaceFolder}/hom_matVecMul",
-                "${workspaceFolder}/RTree"
+                "${workspaceFolder}/RTree",
+                "/home/zhang/sllll/my/RTree-main/deps/eigen"
+
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

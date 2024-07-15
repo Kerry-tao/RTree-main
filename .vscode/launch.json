@@ -11,12 +11,10 @@
             "program": "${workspaceFolder}/build/RTree/RTree/RTree_main",
             "args": [],
             "stopAtEntry": false,
-            // "cwd": "${fileDirname}",
-            "cwd": "${workspaceFolder}/build/RTree",
+            "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "/usr/bin/gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

@@ -1,21 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/zhang/sllll/my/RTree-main/build/RTree/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_3c8b9/fast && /usr/bin/make -f CMakeFiles/cmTC_3c8b9.dir/build.make CMakeFiles/cmTC_3c8b9.dir/build
+Run Build Command(s):/usr/bin/make cmTC_390cb/fast && /usr/bin/make -f CMakeFiles/cmTC_390cb.dir/build.make CMakeFiles/cmTC_390cb.dir/build
 make[1]: 进入目录“/home/zhang/sllll/my/RTree-main/build/RTree/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_3c8b9.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_3c8b9.dir/src.c.o   -c /home/zhang/sllll/my/RTree-main/build/RTree/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_3c8b9
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c8b9.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_3c8b9.dir/src.c.o  -o cmTC_3c8b9 
-/usr/bin/ld: CMakeFiles/cmTC_3c8b9.dir/src.c.o: in function `main':
+Building C object CMakeFiles/cmTC_390cb.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_390cb.dir/src.c.o   -c /home/zhang/sllll/my/RTree-main/build/RTree/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_390cb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_390cb.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_390cb.dir/src.c.o  -o cmTC_390cb 
+/usr/bin/ld: CMakeFiles/cmTC_390cb.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_3c8b9.dir/build.make:87：cmTC_3c8b9] 错误 1
+make[1]: *** [CMakeFiles/cmTC_390cb.dir/build.make:87：cmTC_390cb] 错误 1
 make[1]: 离开目录“/home/zhang/sllll/my/RTree-main/build/RTree/CMakeFiles/CMakeTmp”
-make: *** [Makefile:121：cmTC_3c8b9/fast] 错误 2
+make: *** [Makefile:121：cmTC_390cb/fast] 错误 2
 
 
 Source file was:

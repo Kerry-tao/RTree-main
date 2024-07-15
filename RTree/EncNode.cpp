@@ -7,13 +7,21 @@ std::vector<seal::Ciphertext> default_vector;
 std::vector<std::vector<seal::Ciphertext>> default_ciphertext_2dvector;
 
 //坐标
-encPoint::encPoint():x(x), y(y) {}
+// encPoint::encPoint():x(x), y(y) {}
 //矩形
 // encRectangle::encRectangle():bottomLeft(encPoint()), topRight(encPoint()) {}
 // encRectangle::encRectangle(encPoint& bl, encPoint& tr) : bottomLeft(bl), topRight(tr) {}
 
 //数据点
-encDataPoint::encDataPoint():name(name), coordinate(), vector(default_vector), distance(default_vector) {}
+//encDataPoint::encDataPoint():name(name), coordinate(), vector(default_vector), distance(default_vector) {}
+
+// encDataPoint 的默认构造函数
+
+encDataPoint::encDataPoint()
+    : name(seal::Ciphertext()), coordinate(), vector(default_vector), distance(default_vector)
+{
+    // std::cout << "encDataPoint default constructor called" << std::endl;
+}
 // encDataPoint::encDataPoint(std::vector<seal::Ciphertext>& n, const encPoint& c, std::vector<std::vector<seal::Ciphertext>>& v,std::vector<std::vector<seal::Ciphertext>>& d): name(n), coordinate(c), vector(v), distance(d) {}
 
 // print 方法的实现

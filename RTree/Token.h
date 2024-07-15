@@ -33,10 +33,16 @@ public:
     std::vector<int> vector1;
     std::vector<int> vector2;
     Token(int value, int x, int y, size_t vector1Size = maxDimension, size_t vector2Size = maxDimension);
-    static Token generateRandomToken(int value, int x, int y, int n);
-    static int encryptToken(Token& token,encToken& encToken);
-    static void print_plaintext(const Plaintext &plain);
+    static Token generateRandomToken(int n);
 
+    static int encryptToken(
+        HomFCSS& hom_fcss, 
+        std::shared_ptr<seal::SEALContext> context,
+        Decryptor& decryptor,
+        Token& token,
+        encToken& encToken);
+    
+    static void print_plaintext(const Plaintext &plain);
     // static bool encryptTokenValue(HomFCSS& hom_fcss, const HomFCSS::Meta& meta, std::shared_ptr<seal::SEALContext> context, Tensor<uint64_t> input_value, std::vector<seal::Ciphertext>& encrypted_input_vector);    
     static int encryptTokenValue(int value, HomFCSS& hom_fcss, 
                         HomFCSS::Meta& meta, 

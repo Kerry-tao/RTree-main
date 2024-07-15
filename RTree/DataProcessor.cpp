@@ -13,7 +13,7 @@ void DataProcessor::processFiles(int maxLines, int maxDimension)
 {
     processLocFile(maxLines, maxDimension, dataList);
     processDocFile(maxLines, maxDimension, dataList);
-    printDataList(dataList);
+    // printDataList(dataList);
 }
 void DataProcessor::processLocFile(int maxLines, int maxDimension, std::vector<DataPoint> &dataList)
 {
@@ -31,12 +31,9 @@ void DataProcessor::processLocFile(int maxLines, int maxDimension, std::vector<D
         std::istringstream iss(line);
         std::string token;
         DataPoint data;
-        // Read the first value as name
         std::getline(iss, token, ',');
         data.name = std::stod(token);
-        // Skip the second value
         std::getline(iss, token, ',');
-        // Read the third value as x coordinate
         if (std::getline(iss, token, ','))
         {
             try

@@ -42,28 +42,6 @@ RTreeNode::RTreeNode(bool isLeaf) : isLeaf(isLeaf) {
 
 void RTreeNode::updateMBR() {
     if (isLeaf) {
-        if (points.empty()) return;
-        mbr = Rectangle(points[0], points[0]);
-        for (const auto& p : points) {
-            mbr.bottomLeft.x = std::min(mbr.bottomLeft.x, p.x);
-            mbr.bottomLeft.y = std::min(mbr.bottomLeft.y, p.y);
-            mbr.topRight.x = std::max(mbr.topRight.x, p.x);
-            mbr.topRight.y = std::max(mbr.topRight.y, p.y);
-        }
-    } else {
-        if (children.empty()) return;
-        mbr = children[0]->mbr;
-        for (const auto& child : children) {
-            mbr.bottomLeft.x = std::min(mbr.bottomLeft.x, child->mbr.bottomLeft.x);
-            mbr.bottomLeft.y = std::min(mbr.bottomLeft.y, child->mbr.bottomLeft.y);
-            mbr.topRight.x = std::max(mbr.topRight.x, child->mbr.topRight.x);
-            mbr.topRight.y = std::max(mbr.topRight.y, child->mbr.topRight.y);
-        }
-    }
-}
-
-void RTreeNode::updateMBR2() {
-    if (isLeaf) {
         if (data_points.empty()) return;
         mbr = Rectangle(data_points[0]->coordinate, data_points[0]->coordinate);
         for (const auto& p : data_points) {
@@ -87,7 +65,7 @@ void RTreeNode::updateMBR2() {
 void RTreeNode::updateVec() {
     if (isLeaf) {
         if (data_points.empty()) return;
-        vector.resize(maxDimension,0);
+        vector=data_points[0]->vector;
         for (const auto& p : data_points) {
             for(int i=0;i<p->vector.size();i++) {
                 vector[i]|=p->vector[i];

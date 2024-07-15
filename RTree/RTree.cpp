@@ -1,27 +1,17 @@
 #include "Node.h"
 #include "RTree.h"
 #include <climits>
-// RTree methods
+
+/**
+ * 构造函数
+ */
 RTree::RTree(int maxNodeSize) : maxNodeSize(maxNodeSize)
 {
     root = new RTreeNode(true);
 }
-
-// void RTree::insert(DataPoint p)
-// {
-//     insert(root, p);
-//     // std::cout<<"inser troot"<<root->data_points.size();
-
-//     if (root->data_points.size() > maxNodeSize || root->children.size() > maxNodeSize)
-//     {
-//         RTreeNode *newRoot = new RTreeNode(false);
-//         newRoot->children.push_back(root);
-//         splitNode2(newRoot, 0);
-//         root = newRoot;
-//     }
-// }
-
-
+/**
+ * 向树中插入数据点
+ */
 void RTree::insert(DataPoint* p)
 {
     insert(root, p);
@@ -51,7 +41,7 @@ void RTree::insert(RTreeNode *node, DataPoint*p)
         }
     }
 
-    node->updateMBR2();
+    node->updateMBR();
     node->updateVec();
     node->updateMatrix();
 }
@@ -85,34 +75,12 @@ void RTree::calculateDistances(std::vector<DataPoint> &dataPoints)
     }
 }
 
-// void RTree::printTree() const {
-//     // printTree(root, 0);
-// }
-
 void RTree::printTree2() const
 {
     root->printNode();
     printTree2(root, 0);
 }
 
-// int RTree::chooseSubtree(RTreeNode* node, Point p) const {
-//     // int bestIndex = -1;
-//     // float bestAreaIncrease = std::numeric_limits<float>::max();
-//     // Rectangle pointRect(p, p);
-//     // for (int i = 0; i < node->children.size(); ++i) {
-//     //     Rectangle tempMBR = node->children[i]->mbr;
-//     //     tempMBR.bottomLeft.x = std::min(tempMBR.bottomLeft.x, p.x);
-//     //     tempMBR.bottomLeft.y = std::min(tempMBR.bottomLeft.y, p.y);
-//     //     tempMBR.topRight.x = std::max(tempMBR.topRight.x, p.x);
-//     //     tempMBR.topRight.y = std::max(tempMBR.topRight.y, p.y);
-//     //     float areaIncrease = tempMBR.area() - node->children[i]->mbr.area();
-//     //     if (areaIncrease < bestAreaIncrease) {
-//     //         bestAreaIncrease = areaIncrease;
-//     //         bestIndex = i;
-//     //     }
-//     // }
-//     // return bestIndex;
-// }
 
 int RTree::chooseSubtree(RTreeNode *node, DataPoint *p) const
 {
@@ -136,27 +104,6 @@ int RTree::chooseSubtree(RTreeNode *node, DataPoint *p) const
     return bestIndex;
 }
 
-// void RTree::splitNode(RTreeNode* parent, int index) {
-//     // RTreeNode* node = parent->children[index];
-//     // RTreeNode* newNode = new RTreeNode(node->isLeaf);
-//     //
-//     // // simple split logic: distribute half elements to new node
-//     // int halfSize = node->points.size() / 2;
-//     // newNode->points.assign(node->points.begin() + halfSize, node->points.end());
-//     // node->points.erase(node->points.begin() + halfSize, node->points.end());
-//     //
-//     // if (!node->isLeaf) {
-//     //     halfSize = node->children.size() / 2;
-//     //     newNode->children.assign(node->children.begin() + halfSize, node->children.end());
-//     //     node->children.erase(node->children.begin() + halfSize, node->children.end());
-//     // }
-//     //
-//     // parent->children.push_back(newNode);
-//     // parent->updateMBR();
-//     // node->updateMBR();
-//     // newNode->updateMBR();
-// }
-
 void RTree::splitNode2(RTreeNode *parent, int index)
 {
 
@@ -164,8 +111,6 @@ void RTree::splitNode2(RTreeNode *parent, int index)
 
     RTreeNode *node = parent->children[index];
     RTreeNode *newNode = new RTreeNode(node->isLeaf);
-
-    // simple split logic: distribute half elements to new node
     int halfSize = node->data_points.size() / 2;
     newNode->data_points.assign(node->data_points.begin() + halfSize, node->data_points.end());
     node->data_points.erase(node->data_points.begin() + halfSize, node->data_points.end());
@@ -178,15 +123,15 @@ void RTree::splitNode2(RTreeNode *parent, int index)
     }
 
     parent->children.push_back(newNode);
-    parent->updateMBR2();
+    parent->updateMBR();
     parent->updateVec();
     parent->updateMatrix();
 
-    node->updateMBR2();
+    node->updateMBR();
     node->updateVec();
     node->updateMatrix();
 
-    newNode->updateMBR2();
+    newNode->updateMBR();
     newNode->updateVec();
     newNode->updateMatrix();
 }
